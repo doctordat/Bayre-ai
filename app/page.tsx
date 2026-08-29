@@ -1,10 +1,16 @@
 import Link from 'next/link';
 
 const destinations = [
-  ['Hanoi', 'Street food, Old Quarter, Ha Long gateway'],
-  ['Da Nang & Hoi An', 'Beaches, lantern nights, central Vietnam'],
-  ['Ho Chi Minh City', 'Food, nightlife, Mekong access'],
-  ['Phu Quoc', 'Island beaches and resort stays'],
+  ['Hanoi', 'Street food, Old Quarter, Ha Long gateway', '/en/hanoi'],
+  ['Da Nang & Hoi An', 'Beaches, lantern nights, central Vietnam', '/en/da-nang-hoi-an'],
+  ['Ho Chi Minh City', 'Food, nightlife, Mekong access', '/en/ho-chi-minh-city'],
+  ['Phu Quoc', 'Island beaches and resort stays', '/en/phu-quoc'],
+];
+
+const itineraries = [
+  ['7 days', 'Focused first trip', '/en/vietnam-itinerary-7-days'],
+  ['10 days', 'Best all-round starter', '/en/vietnam-itinerary-10-days'],
+  ['14 days', 'North to south without rushing', '/en/vietnam-itinerary-14-days'],
 ];
 
 export default function HomePage() {
@@ -15,6 +21,7 @@ export default function HomePage() {
         <nav>
           <a href="#planner">Trip Planner</a>
           <a href="#destinations">Destinations</a>
+          <a href="#itineraries">Itineraries</a>
           <a href="#book">Book</a>
         </nav>
       </header>
@@ -49,7 +56,14 @@ export default function HomePage() {
       <section id="destinations" className="shell section">
         <div className="sectionHead"><div><span className="kicker">WHERE TO GO</span><h2>Vietnam essentials.</h2></div><p>Start with the places most first-time travelers combine into one route.</p></div>
         <div className="cards">
-          {destinations.map(([name, desc]) => <article className="card" key={name}><div className="placeholder">{name.slice(0,1)}</div><h3>{name}</h3><p>{desc}</p><a href="#planner">Plan with {name} →</a></article>)}
+          {destinations.map(([name, desc, href]) => <article className="card" key={name}><div className="placeholder">{name.slice(0,1)}</div><h3>{name}</h3><p>{desc}</p><Link href={href}>Explore {name} →</Link></article>)}
+        </div>
+      </section>
+
+      <section id="itineraries" className="itineraryBand">
+        <div className="shell">
+          <div className="sectionHead"><div><span className="kicker">STARTER ITINERARIES</span><h2>Pick a trip length, then personalize it.</h2></div><p>These pages are built around common high-intent planning questions from first-time Vietnam travelers.</p></div>
+          <div className="itineraryGrid">{itineraries.map(([days, desc, href]) => <Link className="itineraryCard" href={href} key={days}><small>VIETNAM ITINERARY</small><b>{days}</b><span>{desc}</span><em>Open guide →</em></Link>)}</div>
         </div>
       </section>
 
