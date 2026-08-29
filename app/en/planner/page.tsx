@@ -1,5 +1,6 @@
-type Params = Promise<Record<string, string | string[] | undefined>>;
+import { affiliates, type AffiliateKey } from '../../../lib/affiliates';
 
+type Params = Promise<Record<string, string | string[] | undefined>>;
 type Stop = { city: string; nights: number; why: string; ideas: string[] };
 
 const plans: Record<string, Stop[]> = {
@@ -40,6 +41,12 @@ const plans: Record<string, Stop[]> = {
 };
 
 const budgetDaily: Record<string, number> = { budget: 45, mid: 85, premium: 170 };
+const bookingItems: { key: AffiliateKey; icon: string; title: string; text: string }[] = [
+  { key: 'flights', icon: '✈️', title: 'Flights to Vietnam', text: 'Compare arrival airports and international routes.' },
+  { key: 'hotels', icon: '🏨', title: 'Hotels by stop', text: 'Find stays in the right neighborhood for this route.' },
+  { key: 'experiences', icon: '🎟️', title: 'Tours & activities', text: 'Book cruises, food tours, tickets and day trips.' },
+  { key: 'transfers', icon: '🚐', title: 'Transfers', text: 'Connect airports, hotels and harder-to-reach stops.' },
+];
 
 export default async function PlannerResult({ searchParams }: { searchParams: Params }) {
   const p = await searchParams;
@@ -80,14 +87,14 @@ export default async function PlannerResult({ searchParams }: { searchParams: Pa
       <section className="bookingFunnel">
         <span className="kicker light">TURN THE PLAN INTO A TRIP</span>
         <h2>Price the pieces when you’re ready.</h2>
-        <p className="bookingIntro">We’ll plug your trusted booking partners into these cards. Until then, they are clearly marked as coming soon — no fake live prices.</p>
+        <p className="bookingIntro">Booking partners appear here only when a real partner link is connected. We do not display fake live prices.</p>
         <div className="actionGrid">
-          <article><span className="actionIcon">✈️</span><small>STEP 1</small><h3>Flights to Vietnam</h3><p>Compare arrival airports and international routes.</p><button disabled>Partner coming soon</button></article>
-          <article><span className="actionIcon">🏨</span><small>STEP 2</small><h3>Hotels by stop</h3><p>Find stays in the right neighborhood for this route.</p><button disabled>Partner coming soon</button></article>
-          <article><span className="actionIcon">🎟️</span><small>STEP 3</small><h3>Tours & activities</h3><p>Book cruises, food tours, tickets and day trips.</p><button disabled>Partner coming soon</button></article>
-          <article><span className="actionIcon">🚐</span><small>STEP 4</small><h3>Transfers</h3><p>Connect airports, hotels and harder-to-reach stops.</p><button disabled>Partner coming soon</button></article>
+          {bookingItems.map((item, index) => {
+            const active = Boolean(affiliates[item.key].href);
+            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p>{active ? <a className="affiliateCta" href={`/go/${item.key}?src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check current options →</a> : <button disabled>Partner coming soon</button>}</article>;
+          })}
         </div>
-        <div className="disclosure">Booking links may become affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you.</div>
+        <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you.</div>
       </section>
 
       <section className="nextBox">
