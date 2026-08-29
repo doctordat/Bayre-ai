@@ -46,6 +46,8 @@ const bookingItems: { key: AffiliateKey; icon: string; title: string; text: stri
   { key: 'hotels', icon: '🏨', title: 'Hotels by stop', text: 'Find stays in the right neighborhood for this route.' },
   { key: 'experiences', icon: '🎟️', title: 'Tours & activities', text: 'Book cruises, food tours, tickets and day trips.' },
   { key: 'transfers', icon: '🚐', title: 'Transfers', text: 'Connect airports, hotels and harder-to-reach stops.' },
+  { key: 'esim', icon: '📶', title: 'eSIM & Wi-Fi', text: 'Get connected before or after you land in Vietnam.' },
+  { key: 'other', icon: '🚆', title: 'Trains & more', text: 'Compare rail and multi-service travel options.' },
 ];
 
 export default async function PlannerResult({ searchParams }: { searchParams: Params }) {
@@ -86,15 +88,15 @@ export default async function PlannerResult({ searchParams }: { searchParams: Pa
 
       <section className="bookingFunnel">
         <span className="kicker light">TURN THE PLAN INTO A TRIP</span>
-        <h2>Price the pieces when you’re ready.</h2>
-        <p className="bookingIntro">Booking partners appear here only when a real partner link is connected. We do not display fake live prices.</p>
+        <h2>Compare the pieces when you’re ready.</h2>
+        <p className="bookingIntro">Choose a booking partner to check current availability and prices. VietnamGo does not display fake live prices.</p>
         <div className="actionGrid">
           {bookingItems.map((item, index) => {
-            const partner = affiliates[item.key].partners[0];
-            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p>{partner ? <a className="affiliateCta" href={`/go/${item.key}?partner=${partner.id}&src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check with {partner.label} →</a> : <button disabled>Partner coming soon</button>}</article>;
+            const partners = affiliates[item.key].partners;
+            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p><div className="partnerLinks">{partners.map(partner => <a key={partner.id} className="affiliateCta" href={`/go/${item.key}?partner=${partner.id}&src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check with {partner.label} →</a>)}</div></article>;
           })}
         </div>
-        <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you.</div>
+        <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you. Prices and availability are provided by the booking partner.</div>
       </section>
 
       <section className="nextBox">
