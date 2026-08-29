@@ -8,28 +8,20 @@ export default async function handler(req, res) {
   const token = process.env.TRAVELPAYOUTS_TOKEN;
   if (!token) return res.status(500).json({ success: false, error: 'Missing server API token' });
 
-  const { origin, destination, departure_at, return_at } = req.query;
+  const { origin, destination, departure_at } = req.query;
   const iata = /^[A-Z]{3}$/;
-  const date = /^\d{4}-\d{2}(-\d{2})?$/;
   if (!iata.test(String(origin || '')) || !iata.test(String(destination || ''))) {
     return res.status(400).json({ success: false, error: 'Invalid IATA code' });
   }
-  if (!date.test(String(departure_at || ''))) {
+  if (!/^\d{4}-\d{2}(-\d{2})?$/.test(String(departure_at || ''))) {
     return res.status(400).json({ success: false, error: 'Invalid departure date' });
-  }
-  if (return_at && !date.test(String(return_at))) {
-    return res.status(400).json({ success: false, error: 'Invalid return date' });
-  }
-  if (return_at && String(return_at) < String(departure_at)) {
-    return res.status(400).json({ success: false, error: 'Return date must be after departure date' });
   }
 
   const url = new URL('https://api.travelpayouts.com/aviasales/v3/prices_for_dates');
   url.searchParams.set('origin', origin);
   url.searchParams.set('destination', destination);
   url.searchParams.set('departure_at', departure_at);
-  if (return_at) url.searchParams.set('return_at', return_at);
-  url.searchParams.set('one_way', return_at ? 'false' : 'true');
+  url.searchParams.set('one_way', 'true');
   url.searchParams.set('direct', 'false');
   url.searchParams.set('sorting', 'price');
   url.searchParams.set('currency', 'vnd');
@@ -59,10 +51,7 @@ export default async function handler(req, res) {
       departure_at: x.departure_at,
       return_at: x.return_at || null,
       transfers: x.transfers ?? x.number_of_changes ?? null,
-      return_transfers: x.return_transfers ?? null,
       duration: x.duration ?? null,
-      duration_to: x.duration_to ?? null,
-      duration_back: x.duration_back ?? null,
       found_at: x.found_at || null,
       link: x.link || null
     })) : [];
@@ -72,7 +61,6 @@ export default async function handler(req, res) {
       success: true,
       source: 'Aviasales Data API',
       realtime: false,
-      trip_type: return_at ? 'roundtrip' : 'oneway',
       note: 'Recent cached fares, not realtime inventory.',
       data
     });
