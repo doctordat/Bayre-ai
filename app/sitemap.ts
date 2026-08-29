@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/en',
     '/en/explore',
+    '/en/guides',
     '/en/planner',
     '/en/hanoi',
     '/en/da-nang-hoi-an',
@@ -21,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return pages.map((path, index) => ({
     url: `${base}${path}`,
-    changeFrequency: index <= 3 ? 'weekly' : 'monthly',
-    priority: index <= 1 ? 1 : index <= 3 ? 0.9 : 0.8,
+    changeFrequency: index <= 4 ? 'weekly' : 'monthly',
+    priority: index <= 1 ? 1 : index <= 4 ? 0.9 : 0.8,
   }));
 }
