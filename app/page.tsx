@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { affiliates, type AffiliateKey } from '../lib/affiliates';
 
 const destinations = [
-  { name: 'Hanoi', note: 'Old-world charm', description: 'Street-food mornings, lake walks and a thousand years of stories.', href: '/en/hanoi', className: 'hanoi', number: '01' },
-  { name: 'Da Nang & Hoi An', note: 'Coast meets culture', description: 'Beach days, lantern nights and the easiest central Vietnam pairing.', href: '/en/da-nang-hoi-an', className: 'hoian', number: '02' },
-  { name: 'Ho Chi Minh City', note: 'Big-city energy', description: 'Coffee, rooftop nights and a gateway to the Mekong Delta.', href: '/en/ho-chi-minh-city', className: 'saigon', number: '03' },
-  { name: 'Phu Quoc', note: 'Island reset', description: 'Warm water, sunset beaches and an easy final stop.', href: '/en/phu-quoc', className: 'phuquoc', number: '04' },
+  { name: 'Hanoi', note: 'Old-world charm', description: 'Street-food mornings, lake walks and a thousand years of stories.', href: '/en/hanoi', image: 'https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?auto=format&fit=crop&w=1200&q=82', number: '01' },
+  { name: 'Da Nang & Hoi An', note: 'Coast meets culture', description: 'Beach days, lantern nights and the easiest central Vietnam pairing.', href: '/en/da-nang-hoi-an', image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82', number: '02' },
+  { name: 'Ho Chi Minh City', note: 'Big-city energy', description: 'Coffee, rooftop nights and a gateway to the Mekong Delta.', href: '/en/ho-chi-minh-city', image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82', number: '03' },
+  { name: 'Phu Quoc', note: 'Island reset', description: 'Warm water, sunset beaches and an easy final stop.', href: '/en/phu-quoc', image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=82', number: '04' },
 ];
 
 const itineraries = [
@@ -14,10 +14,10 @@ const itineraries = [
   { days: '14 days', title: 'Vietnam, without the rush', route: 'North → Central → South → Island', description: 'See the country change while leaving room to slow down.', href: '/en/vietnam-itinerary-14-days', tone: 'blue' },
 ];
 
-const valueProps = [
-  ['01', 'Built for first trips', 'Clear choices and realistic pacing, without the travel-planning rabbit hole.'],
-  ['02', 'Independent advice', 'Useful recommendations first. Affiliate relationships are always disclosed.'],
-  ['03', 'One route, fewer tabs', 'Plan the journey, then find the bookings that make each stop work.'],
+const budgetTiers = [
+  { code: 'A', label: 'Smart budget', estimate: '≈ US$45/day', value: 'budget', text: 'Local food, simple stays and public transport.' },
+  { code: 'B', label: 'Comfortable', estimate: '≈ US$85/day', value: 'mid', text: 'Well-rated hotels, easy transfers and more activities.' },
+  { code: 'C', label: 'Premium', estimate: '≈ US$170/day', value: 'premium', text: 'Boutique stays, private transfers and premium experiences.' },
 ];
 
 const bookingProducts: { key: AffiliateKey; icon: string; title: string; description: string }[] = [
@@ -34,7 +34,7 @@ export default function HomePage() {
     <main>
       <header className="nav shell">
         <Link className="brand" href="/">VietnamGo<span>.</span></Link>
-        <nav aria-label="Main navigation"><a href="#planner">Trip planner</a><a href="#destinations">Destinations</a><a href="#itineraries">Itineraries</a><a href="#book">Book</a></nav>
+        <nav aria-label="Main navigation"><a href="#planner">Trip planner</a><Link href="/en/explore">Explore</Link><a href="#itineraries">Itineraries</a><a href="#book">Book</a></nav>
         <a className="navAction" href="#planner">Plan my trip <span aria-hidden="true">↗</span></a>
       </header>
 
@@ -43,26 +43,24 @@ export default function HomePage() {
           <div className="heroCopy">
             <div className="eyebrow">YOUR VIETNAM, MADE SIMPLE</div>
             <h1>Go further.<br /><em>Plan lighter.</em></h1>
-            <p className="lead">A free, practical trip planner for curious travelers — from your first route idea to the bookings that bring it to life.</p>
-            <div className="heroActions"><a className="primary warm" href="#planner">Build my Vietnam trip <span>→</span></a><a className="textLink" href="#destinations">Explore destinations <span>↓</span></a></div>
-            <div className="heroProof"><span>✓ No sign-up</span><span>✓ Free to use</span><span>✓ Made for first-time visitors</span></div>
+            <p className="lead">See real destinations, choose a realistic A/B/C budget, build a route and then book the pieces that make it work.</p>
+            <div className="heroActions"><a className="primary warm" href="#planner">Build my Vietnam trip <span>→</span></a><Link className="textLink" href="/en/explore">Real photos & budget guide <span>↗</span></Link></div>
+            <div className="heroProof"><span>✓ No sign-up</span><span>✓ Free to use</span><span>✓ Planning estimates, not fake live prices</span></div>
           </div>
-          <div className="heroVisual" aria-label="A visual journey through Vietnam">
-            <div className="sunDisc" /><div className="mountain mountainBack" /><div className="mountain mountainFront" />
-            <div className="routeLine"><span className="routeDot start" /><span className="routeDot end" /></div>
+          <div className="heroVisual" style={{ backgroundImage: "linear-gradient(rgba(15,46,37,.08),rgba(15,46,37,.22)),url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1500&q=85')", backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Real Vietnam travel photography">
             <div className="floatingStamp"><span>START HERE</span><b>VN</b><small>8°–23° N</small></div>
-            <div className="heroCaption"><span>From street-food alleys</span><b>to island sunsets.</b></div>
+            <div className="heroCaption"><span>Real places. Sensible budgets.</span><b>One trip plan.</b></div>
           </div>
         </div>
       </section>
 
       <section id="planner" className="plannerWrap">
         <div className="shell">
-          <div className="sectionHead plannerHead"><div><span className="kicker">FREE TRIP PLANNER</span><h2>Tell us your travel rhythm.</h2></div><p>Four quick choices. One sensible starter route you can tune, save and use to plan the rest of your trip.</p></div>
+          <div className="sectionHead plannerHead"><div><span className="kicker">FREE TRIP PLANNER</span><h2>Tell us your travel rhythm.</h2></div><p>Choose who is going, how long you have, your A/B/C spending style and your travel mood.</p></div>
           <form className="planner" action="/en/planner">
             <label><span>01 · Who&apos;s going?</span><select name="style" defaultValue="couple"><option value="solo">Solo traveler</option><option value="couple">Couple</option><option value="family">Family</option><option value="friends">Friends</option></select></label>
             <label><span>02 · How long?</span><select name="days" defaultValue="10"><option value="7">7 days</option><option value="10">10 days</option><option value="14">14 days</option><option value="21">21 days</option></select></label>
-            <label><span>03 · Your budget</span><select name="budget" defaultValue="mid"><option value="budget">Budget</option><option value="mid">Comfortable</option><option value="premium">Premium</option></select></label>
+            <label><span>03 · Your budget</span><select name="budget" defaultValue="mid"><option value="budget">A · Smart budget</option><option value="mid">B · Comfortable</option><option value="premium">C · Premium</option></select></label>
             <label><span>04 · Your travel mood</span><select name="interest" defaultValue="mix"><option value="mix">A bit of everything</option><option value="food">Food & culture</option><option value="beach">Beaches & downtime</option><option value="nature">Nature & adventure</option></select></label>
             <button className="primary plannerButton" type="submit">Create my route <span aria-hidden="true">→</span></button>
           </form>
@@ -70,16 +68,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="shell section">
+        <div className="sectionHead"><div><span className="kicker">BUDGET A / B / C</span><h2>Design the trip around what you want to spend.</h2></div><p>These are planning estimates for Vietnam, not live booking prices. Pick a tier to preload the planner.</p></div>
+        <div className="itineraryGrid">
+          {budgetTiers.map((tier) => <Link className="itineraryCard" href={`/en/planner?days=10&style=couple&interest=mix&budget=${tier.value}`} key={tier.code}><div className="itineraryTop"><small>BUDGET {tier.code}</small><span>↗</span></div><b>{tier.code}</b><h3>{tier.label}</h3><p>{tier.text}</p><em>{tier.estimate}</em></Link>)}
+        </div>
+      </section>
+
       <section id="destinations" className="shell section destinationSection">
-        <div className="sectionHead"><div><span className="kicker">PLACES WORTH THE DETOUR</span><h2>Four ways into Vietnam.</h2></div><p>Pick the feeling you want first. We&apos;ll help with the route after.</p></div>
+        <div className="sectionHead"><div><span className="kicker">REAL DESTINATION PHOTOS</span><h2>See the place before you add it.</h2></div><p>Short VietnamGo editorial notes help you decide where each destination fits in the route.</p></div>
         <div className="destinationGrid">
           {destinations.map((destination) => (
-            <Link className={`destinationCard ${destination.className}`} href={destination.href} key={destination.name}>
-              <span className="destinationNumber">{destination.number}</span><div className="destinationArt" aria-hidden="true"><span className="artSun" /><span className="artLand" /></div>
-              <div className="destinationCopy"><small>{destination.note}</small><h3>{destination.name}</h3><p>{destination.description}</p><span className="cardArrow">Explore guide ↗</span></div>
+            <Link className="destinationCard" href={destination.href} key={destination.name}>
+              <span className="destinationNumber">{destination.number}</span>
+              <img src={destination.image} alt={destination.name} className="destinationArt" style={{ objectFit: 'cover', width: '100%' }} />
+              <div className="destinationCopy"><small>{destination.note}</small><h3>{destination.name}</h3><p>{destination.description}</p><span className="cardArrow">Read review & guide ↗</span></div>
             </Link>
           ))}
         </div>
+        <div className="heroActions"><Link className="secondary" href="/en/explore">Open all real photos + budget guide →</Link></div>
       </section>
 
       <section id="itineraries" className="itineraryBand">
@@ -91,23 +98,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="valueSection">
-        <div className="shell valueGrid">
-          <div className="valueIntro"><span className="kicker light">WHY VIETNAMGO</span><h2>Less spreadsheet.<br />More Vietnam.</h2><p>Travel planning should create excitement, not decision fatigue.</p></div>
-          <div className="valueList">{valueProps.map(([number, title, description]) => <article key={number}><span>{number}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</div>
-        </div>
-      </section>
-
       <section id="book" className="bookingSection">
         <div className="shell">
-          <div className="bookingHeader"><div><span className="kicker">WHEN YOU&apos;RE READY</span><h2>Turn the route<br />into a real trip.</h2></div><p>Check the essential bookings in the order that makes sense. Partners that are not connected yet stay clearly marked as coming soon.</p></div>
+          <div className="bookingHeader"><div><span className="kicker">WHEN YOU&apos;RE READY</span><h2>Turn the route<br />into a real trip.</h2></div><p>Check current availability with connected partners after you know your route and budget.</p></div>
           <div className="bookingCategories">
             {bookingProducts.map((product) => (
               <article className="bookingCategory active" key={product.key}>
                 <span className="bookingIcon">{product.icon}</span><small>PARTNERS CONNECTED</small><h3>{product.title}</h3><p>{product.description}</p>
-                <div className="partnerLinks">
-                  {affiliates[product.key].partners.map((partner) => <a href={`/go/${product.key}?partner=${partner.id}&src=homepage&page=home`} target="_blank" rel="sponsored nofollow noopener" key={partner.id}>{partner.label} <span>→</span></a>)}
-                </div>
+                <div className="partnerLinks">{affiliates[product.key].partners.map((partner) => <a href={`/go/${product.key}?partner=${partner.id}&src=homepage&page=home`} target="_blank" rel="sponsored nofollow noopener" key={partner.id}>{partner.label} <span>→</span></a>)}</div>
               </article>
             ))}
           </div>
@@ -116,8 +114,7 @@ export default function HomePage() {
       </section>
 
       <section className="finalCta shell"><span className="ctaCompass" aria-hidden="true">✦</span><div><span className="kicker">YOUR TRIP STARTS HERE</span><h2>Vietnam is a big idea.<br />Let&apos;s make it a plan.</h2></div><a className="primary warm" href="#planner">Build my free route <span>→</span></a></section>
-
-      <footer className="siteFooter"><div className="shell footer"><b>VietnamGo<span>.</span></b><span>Independent Vietnam travel planning for curious first-time visitors.</span><div><a href="#planner">Planner</a><a href="#destinations">Guides</a><a href="#book">Affiliate disclosure</a></div></div></footer>
+      <footer className="siteFooter"><div className="shell footer"><b>VietnamGo<span>.</span></b><span>Independent Vietnam travel planning for curious first-time visitors.</span><div><a href="#planner">Planner</a><Link href="/en/explore">Explore</Link><a href="#book">Affiliate disclosure</a></div></div></footer>
     </main>
   );
 }
