@@ -4,55 +4,115 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>BayRẻ AI — So sánh vé máy bay</title>
-  <meta name="description" content="So sánh lựa chọn chuyến bay và chuyển đến hãng để kiểm tra giá mới nhất." />
+  <meta name="description" content="Tìm và so sánh lựa chọn chuyến bay, sau đó chuyển đến website hãng để kiểm tra giá mới nhất." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--blue:#2563eb;--blue2:#1d4ed8;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--card:#fff;--green:#16a34a;--amber:#f59e0b}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink)}
-    .topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{max-width:1160px;margin:auto;height:66px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:22px;font-weight:800}.brand b{color:var(--blue)}.mini{font-size:12px;color:var(--muted)}
-    .hero{background:linear-gradient(180deg,#eaf2ff 0%,#f8fafc 100%);padding:48px 20px 28px}.hero-inner{max-width:1160px;margin:auto}.eyebrow{font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;max-width:760px;margin:10px 0 12px}.hero p{font-size:17px;color:var(--muted);max-width:760px;margin:0 0 24px}
-    .search-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;display:grid;grid-template-columns:1.25fr 1.25fr .9fr .8fr auto;gap:10px;box-shadow:0 12px 28px rgba(15,23,42,.08)}.field{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:#fff}.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}input,select{border:0;outline:0;width:100%;font:inherit;color:var(--ink);background:transparent}.swap{font-size:18px;color:var(--muted);position:absolute}.btn{border:0;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;padding:0 22px;cursor:pointer}.btn:hover{background:var(--blue2)}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:13px;color:#475569}
-    .main{max-width:1160px;margin:0 auto;padding:26px 20px 56px}.toolbar{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px}.toolbar h2{font-size:24px;margin:0}.toolbar .sub{color:var(--muted);font-size:13px;margin-top:6px}.sort{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-size:13px}
-    .results{display:grid;gap:12px}.flight{display:grid;grid-template-columns:1.1fr .75fr .55fr auto;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;transition:.18s}.flight:hover{box-shadow:0 8px 24px rgba(15,23,42,.07);transform:translateY(-1px)}.air{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:14px;background:#eef2ff;color:#3730a3;display:grid;place-items:center;font-weight:800}.name{font-weight:800}.desc{font-size:13px;color:var(--muted);margin-top:4px}.route{font-size:13px;color:#475569}.route strong{display:block;font-size:16px;color:var(--ink);margin-bottom:4px}.price{text-align:right}.price strong{display:block;font-size:23px}.price span{font-size:11px;color:var(--muted)}.cta{background:var(--blue);color:#fff;text-decoration:none;font-weight:800;border-radius:12px;padding:12px 15px;white-space:nowrap}.cta:hover{background:var(--blue2)}.tag{display:inline-block;font-size:10px;font-weight:800;padding:4px 7px;border-radius:999px;background:#dcfce7;color:#166534;margin-left:7px}.sponsored{font-size:10px;color:#94a3b8;margin-top:7px;text-align:right}
-    .insight{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}.spark{width:42px;height:42px;border-radius:12px;background:#eff6ff;display:grid;place-items:center}.insight h3{margin:0 0 5px;font-size:15px}.insight p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.note{margin-top:14px;font-size:12px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:12px 14px}footer{text-align:center;color:#94a3b8;font-size:12px;margin-top:30px}.empty{background:#fff;border:1px dashed #cbd5e1;padding:30px;border-radius:18px;text-align:center;color:var(--muted)}
-    @media(max-width:900px){.search-card{grid-template-columns:1fr 1fr}.btn{min-height:48px}.flight{grid-template-columns:1fr 1fr}.price{text-align:left}.cta{text-align:center}.sponsored{text-align:left}}@media(max-width:620px){.hero{padding-top:30px}.search-card{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.flight{grid-template-columns:1fr}.nav .mini{display:none}}
+    :root{
+      --brand:#1264e8;--brand-dark:#0d4fb8;--brand-soft:#eaf2ff;
+      --ink:#0b1220;--muted:#64748b;--line:#e5e7eb;--bg:#f5f7fb;--card:#fff;
+      --green:#0f9f6e;--green-soft:#eafaf3;--amber:#9a6700;--amber-soft:#fff8df;
+      --shadow:0 14px 40px rgba(15,23,42,.08);--shadow-lg:0 24px 60px rgba(15,23,42,.12)
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input,select{font:inherit}button{cursor:pointer}
+    .shell{max-width:1180px;margin:auto;padding:0 20px}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,232,240,.85)}
+    .nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:-.03em}
+    .brand-mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(145deg,var(--brand),#65a3ff);display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px rgba(18,100,232,.25)}
+    .brand b{color:var(--brand)}
+    .nav-meta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12px}.dot{width:7px;height:7px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 4px #dcfce7}
+
+    .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#eef5ff 0%,#f7f9fd 78%,var(--bg) 100%);padding:58px 0 34px}
+    .hero:before{content:"";position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.14),rgba(59,130,246,0) 68%);right:-90px;top:-120px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dbeafe;color:#1d4ed8;font-size:12px;font-weight:800;padding:7px 10px;border-radius:999px;box-shadow:0 6px 18px rgba(37,99,235,.08)}
+    .hero h1{font-size:clamp(38px,6vw,64px);letter-spacing:-.055em;line-height:.98;max-width:830px;margin:16px 0 16px}
+    .hero p{max-width:720px;font-size:17px;line-height:1.65;color:var(--muted);margin:0 0 28px}
+
+    .search-panel{background:#fff;border:1px solid rgba(226,232,240,.95);border-radius:24px;padding:14px;box-shadow:var(--shadow-lg);position:relative;z-index:2}
+    .trip-tabs{display:flex;gap:7px;padding:2px 2px 12px}.trip-tab{border:0;background:transparent;border-radius:999px;padding:8px 12px;color:var(--muted);font-size:13px;font-weight:700}.trip-tab.active{background:var(--brand-soft);color:var(--brand)}
+    .search-grid{display:grid;grid-template-columns:1.15fr 46px 1.15fr .85fr .7fr auto;align-items:stretch;gap:8px}
+    .field{border:1px solid var(--line);border-radius:15px;padding:10px 12px;min-width:0;background:#fff;transition:.18s}.field:focus-within{border-color:#93c5fd;box-shadow:0 0 0 3px #eff6ff}.field label{font-size:11px;color:#8a96a8;display:block;margin-bottom:5px}.field input,.field select{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-weight:650;min-width:0}
+    .swap{border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--brand);font-size:18px}.swap:hover{background:#f8fbff}
+    .search-btn{border:0;border-radius:15px;background:linear-gradient(135deg,var(--brand),#347ff1);color:#fff;font-weight:800;padding:0 22px;box-shadow:0 10px 22px rgba(18,100,232,.22)}.search-btn:hover{background:var(--brand-dark)}
+    .quick-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.quick{background:rgba(255,255,255,.78);border:1px solid #dbe3ef;color:#526176;border-radius:999px;padding:8px 11px;font-size:12px}
+
+    .main{padding:28px 20px 64px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}.section-head h2{margin:0;font-size:25px;letter-spacing:-.035em}.section-head p{margin:6px 0 0;color:var(--muted);font-size:13px}.sort{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;color:#475569;font-size:13px}
+    .date-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}.date-card{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px;text-align:center;color:#64748b;font-size:12px}.date-card strong{display:block;color:var(--ink);font-size:14px;margin-top:3px}.date-card.active{border-color:#8ebdff;background:#eff6ff;color:#2563eb}.date-card.active strong{color:#1d4ed8}
+    .content-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;align-items:start}.results{display:grid;gap:12px}
+    .flight-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;transition:.18s;position:relative;overflow:hidden}.flight-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.flight-card.best{border-color:#9ec6ff}.flight-card.best:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand)}
+    .flight-top{display:grid;grid-template-columns:1.15fr 1.25fr .75fr auto;gap:18px;align-items:center}.airline{display:flex;gap:12px;align-items:center;min-width:0}.air-logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#eef4ff,#dfeaff);display:grid;place-items:center;font-weight:800;color:#234da0;flex:0 0 auto}.air-name{font-weight:800;font-size:15px}.air-note{font-size:12px;color:var(--muted);margin-top:4px}.best-tag{display:inline-block;background:var(--green-soft);color:#087a55;border:1px solid #c9f1e1;border-radius:999px;font-size:9px;padding:4px 6px;font-weight:800;margin-left:6px;vertical-align:1px}
+    .timing{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}.time strong{font-size:18px;display:block}.time span{font-size:11px;color:var(--muted)}.line{display:flex;align-items:center;gap:6px;color:#94a3b8;font-size:10px;white-space:nowrap}.line:before,.line:after{content:"";height:1px;background:#cbd5e1;flex:1}.price{text-align:right}.price strong{display:block;font-size:23px;letter-spacing:-.03em}.price span{font-size:11px;color:var(--muted)}.book{background:var(--brand);color:#fff;border-radius:13px;text-decoration:none;padding:12px 15px;font-weight:800;white-space:nowrap}.book:hover{background:var(--brand-dark)}
+    .flight-bottom{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #f0f2f5;margin-top:14px;padding-top:12px;color:#64748b;font-size:11px}.features{display:flex;gap:12px;flex-wrap:wrap}.sponsored{color:#94a3b8}
+
+    .side{display:grid;gap:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}.panel h3{margin:0 0 7px;font-size:14px}.panel p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}.ai-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#eef5ff,#dbeafe);display:grid;place-items:center;margin-bottom:12px}.trust{display:grid;gap:11px}.trust-item{display:flex;gap:10px;align-items:flex-start}.trust-icon{width:26px;height:26px;border-radius:8px;background:#f1f5f9;display:grid;place-items:center;flex:0 0 auto;font-size:12px}.trust-item b{display:block;font-size:12px;margin-bottom:2px}.trust-item span{font-size:11px;color:var(--muted);line-height:1.4}
+    .notice{margin-top:18px;background:var(--amber-soft);border:1px solid #f4df9a;color:#7c5b00;border-radius:15px;padding:13px 14px;font-size:12px;line-height:1.55}.empty{background:#fff;border:1px dashed #cbd5e1;border-radius:18px;padding:34px;text-align:center;color:var(--muted)}footer{text-align:center;color:#94a3b8;font-size:11px;margin-top:28px}
+
+    @media(max-width:980px){.search-grid{grid-template-columns:1fr 42px 1fr 1fr}.search-btn{min-height:48px}.content-grid{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.flight-top{grid-template-columns:1fr 1.15fr}.price{text-align:left}.book{text-align:center}}
+    @media(max-width:650px){.nav-meta{display:none}.hero{padding-top:34px}.hero p{font-size:15px}.search-panel{border-radius:20px;padding:11px}.search-grid{grid-template-columns:1fr}.swap{height:42px}.trip-tabs{overflow:auto}.date-strip{grid-template-columns:repeat(5,120px);overflow:auto;padding-bottom:4px}.section-head{align-items:flex-start;flex-direction:column}.flight-top{grid-template-columns:1fr}.timing{grid-template-columns:auto 1fr auto}.price{text-align:left}.book{text-align:center}.flight-bottom{align-items:flex-start;flex-direction:column}.side{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="topbar"><div class="nav"><div class="brand">Bay<b>Rẻ</b> AI</div><div class="mini">So sánh nhanh • Chuyển đến hãng • Không thu phí</div></div></div>
-  <section class="hero"><div class="hero-inner">
-    <div class="eyebrow">Flight finder MVP</div>
-    <h1>Tìm lựa chọn vé phù hợp trước khi đặt.</h1>
-    <p>Nhập hành trình, xem các lựa chọn được sắp xếp theo giá minh hoạ rồi kiểm tra giá thực tế mới nhất trên website hãng.</p>
-    <div class="search-card">
-      <div class="field"><label>Điểm đi</label><input id="from" value="TP. Hồ Chí Minh" placeholder="VD: TP. Hồ Chí Minh"></div>
-      <div class="field"><label>Điểm đến</label><input id="to" value="Phú Quốc" placeholder="VD: Phú Quốc"></div>
-      <div class="field"><label>Ngày đi</label><input id="depart" type="date"></div>
-      <div class="field"><label>Hành khách</label><select id="pax"><option>1 người</option><option>2 người</option><option>3 người</option><option>4 người</option></select></div>
-      <button class="btn" onclick="searchFlights()">Tìm chuyến bay</button>
+  <header class="topbar"><div class="shell nav">
+    <div class="brand"><div class="brand-mark">✈</div><span>Bay<b>Rẻ</b> AI</span></div>
+    <div class="nav-meta"><span class="dot"></span><span>So sánh nhanh • chuyển đến website hãng</span></div>
+  </div></header>
+
+  <section class="hero"><div class="shell">
+    <div class="eyebrow">✦ Trợ lý tìm vé đơn giản</div>
+    <h1>Tìm chuyến bay.<br>So sánh nhanh. Đặt đúng chỗ.</h1>
+    <p>Nhập hành trình, xem các lựa chọn được sắp xếp rõ ràng rồi mở website hãng để kiểm tra giá thực tế mới nhất.</p>
+
+    <div class="search-panel">
+      <div class="trip-tabs"><button class="trip-tab active">Một chiều</button><button class="trip-tab" disabled>Khứ hồi • sắp có</button><button class="trip-tab" disabled>Nhiều chặng • sắp có</button></div>
+      <div class="search-grid">
+        <div class="field"><label>Điểm đi</label><input id="from" value="TP. Hồ Chí Minh" placeholder="VD: TP. Hồ Chí Minh"></div>
+        <button class="swap" onclick="swapRoute()" aria-label="Đổi điểm đi và đến">⇄</button>
+        <div class="field"><label>Điểm đến</label><input id="to" value="Phú Quốc" placeholder="VD: Phú Quốc"></div>
+        <div class="field"><label>Ngày đi</label><input id="depart" type="date"></div>
+        <div class="field"><label>Hành khách</label><select id="pax"><option>1 người</option><option>2 người</option><option>3 người</option><option>4 người</option></select></div>
+        <button class="search-btn" onclick="searchFlights()">Tìm vé</button>
+      </div>
     </div>
-    <div class="chips"><span class="chip">✓ Không cần đăng nhập</span><span class="chip">✓ Mở trang hãng chính thức</span><span class="chip">✓ Tối ưu cho mobile</span></div>
+    <div class="quick-row"><span class="quick">✓ Không cần đăng nhập</span><span class="quick">✓ Không thu phí tìm kiếm</span><span class="quick">✓ Mở website hãng chính thức</span><span class="quick">✓ Tối ưu cho điện thoại</span></div>
   </div></section>
 
-  <main class="main">
-    <div class="toolbar"><div><h2 id="title">TP. Hồ Chí Minh → Phú Quốc</h2><div class="sub" id="summary">Các lựa chọn hiện có cho hành trình của bạn</div></div><div class="sort">Sắp xếp: Giá thấp trước</div></div>
-    <div id="results" class="results"></div>
-    <div class="insight"><div class="spark">✦</div><div><h3>Gợi ý BayRẻ AI</h3><p id="tip">Nếu lịch trình linh hoạt, thử đổi ngày đi ±1–2 ngày rồi kiểm tra lại trên trang hãng. Chênh lệch giá có thể đáng kể.</p></div></div>
-    <div class="note"><b>Lưu ý:</b> Giá trong bản MVP là giá minh hoạ để kiểm thử trải nghiệm và tỷ lệ click, không phải dữ liệu realtime. Giá chính xác chỉ được xác nhận sau khi bạn mở website của hãng.</div>
-    <footer>BayRẻ AI • MVP affiliate flight comparison</footer>
+  <main class="shell main">
+    <div class="section-head"><div><h2 id="title">TP. Hồ Chí Minh → Phú Quốc</h2><p id="summary">Các lựa chọn phù hợp với hành trình của bạn</p></div><select class="sort" onchange="sortFlights(this.value)"><option value="price">Giá thấp trước</option><option value="airline">Theo hãng</option></select></div>
+    <div class="date-strip" id="dates"></div>
+
+    <div class="content-grid">
+      <div id="results" class="results"></div>
+      <aside class="side">
+        <div class="panel"><div class="ai-icon">✦</div><h3>Gợi ý BayRẻ AI</h3><p id="tip">Nếu lịch linh hoạt, thử đổi ngày đi ±1–2 ngày. Chênh lệch giá có thể đáng kể.</p></div>
+        <div class="panel"><h3>Vì sao cách này an toàn hơn?</h3><div class="trust">
+          <div class="trust-item"><div class="trust-icon">↗</div><div><b>Đặt trên website hãng</b><span>BayRẻ AI không giữ tiền hoặc thông tin thanh toán.</span></div></div>
+          <div class="trust-item"><div class="trust-icon">✓</div><div><b>Giá được xác nhận tại hãng</b><span>Giá trên MVP chỉ dùng để minh hoạ trải nghiệm.</span></div></div>
+          <div class="trust-item"><div class="trust-icon">◎</div><div><b>Minh bạch affiliate</b><span>Một số liên kết có thể tạo hoa hồng khi bạn đặt vé.</span></div></div>
+        </div></div>
+      </aside>
+    </div>
+
+    <div class="notice"><b>Lưu ý quan trọng:</b> Giá hiển thị trong bản MVP là giá minh hoạ để kiểm thử giao diện và tỷ lệ click, không phải dữ liệu realtime. Giá cuối cùng, điều kiện vé, hành lý và lịch bay chỉ được xác nhận trên website của hãng.</div>
+    <footer>BayRẻ AI • MVP so sánh chuyến bay & affiliate booking</footer>
   </main>
+
 <script>
 const airlines=[
- {name:'Sun PhuQuoc Airways',code:'9G',base:1090000,note:'Gợi ý cho hành trình Phú Quốc',duration:'1h 05m',affiliate:'https://go.isclix.com/deep_link/v6/5356313228598147852/6866678819944280655?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cuc3VucGh1cXVvY2FpcndheXMuY29tL3ZuL3Zp'},
- {name:'Vietnam Airlines',code:'VN',base:1290000,note:'Hãng truyền thống • tuỳ hạng vé',duration:'1h 05m',affiliate:'https://go.isclix.com/deep_link/v6/5356313228598147852/6318680441596031865?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cudmlldG5hbWFpcmxpbmVzLmNvbS92bi92aS9ob21l'}
+  {name:'Sun PhuQuoc Airways',code:'9G',base:1090000,note:'Gợi ý cho hành trình Phú Quốc',depart:'07:20',arrive:'08:25',duration:'1h 05m',affiliate:'https://go.isclix.com/deep_link/v6/5356313228598147852/6866678819944280655?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cuc3VucGh1cXVvY2FpcndheXMuY29tL3ZuL3Zp'},
+  {name:'Vietnam Airlines',code:'VN',base:1290000,note:'Hãng truyền thống • tuỳ hạng vé',depart:'09:10',arrive:'10:15',duration:'1h 05m',affiliate:'https://go.isclix.com/deep_link/v6/5356313228598147852/6318680441596031865?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cudmlldG5hbWFpcmxpbmVzLmNvbS92bi92aS9ob21l'}
 ];
-function fmt(n){return new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n)}
+let currentFlights=[];let currentFrom='';let currentTo='';
+const fmt=n=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n);
 function factor(a,b,d){const seed=(a+b+d).split('').reduce((x,c)=>x+c.charCodeAt(0),0);return .92+(seed%22)/100}
-function render(list,from,to){const el=document.getElementById('results');if(!list.length){el.innerHTML='<div class="empty">Chưa có đối tác phù hợp hành trình này.</div>';return;}el.innerHTML=list.map((a,i)=>`<div class="flight"><div class="air"><div class="logo">${a.code}</div><div><div class="name">${a.name}${i===0?'<span class="tag">GIÁ THẤP NHẤT</span>':''}</div><div class="desc">${a.note}</div></div></div><div class="route"><strong>${from} → ${to}</strong>Bay thẳng • khoảng ${a.duration}</div><div class="price"><strong>${fmt(a.price)}</strong><span>giá minh hoạ / 1 chiều</span><div class="sponsored">Liên kết tiếp thị</div></div><a class="cta" href="${a.affiliate}" target="_blank" rel="nofollow sponsored noopener">Xem giá mới nhất →</a></div>`).join('')}
-function searchFlights(){const from=document.getElementById('from').value.trim()||'TP. Hồ Chí Minh';const to=document.getElementById('to').value.trim()||'Phú Quốc';const d=document.getElementById('depart').value||new Date().toISOString().slice(0,10);const f=factor(from,to,d);const list=airlines.map((a,i)=>({...a,price:Math.round((a.base*f+i*35000)/10000)*10000})).sort((a,b)=>a.price-b.price);document.getElementById('title').textContent=`${from} → ${to}`;document.getElementById('summary').textContent=`${list.length} lựa chọn • ngày ${d.split('-').reverse().join('/')}`;document.getElementById('tip').textContent=`Đang xem ${from} → ${to}. Nếu lịch trình linh hoạt, thử đổi ngày đi ±1–2 ngày rồi kiểm tra lại để săn giá tốt hơn.`;render(list,from,to)}
+function dateVN(d){return new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'}).format(d)}
+function renderDates(base){const root=document.getElementById('dates');const selected=new Date(base+'T12:00:00');root.innerHTML='';for(let i=-2;i<=2;i++){const d=new Date(selected);d.setDate(d.getDate()+i);const iso=d.toISOString().slice(0,10);const el=document.createElement('button');el.className='date-card'+(i===0?' active':'');el.innerHTML=`${dateVN(d)}<strong>${i===0?'Đang chọn':'Xem ngày này'}</strong>`;el.onclick=()=>{document.getElementById('depart').value=iso;searchFlights()};root.appendChild(el)}}
+function render(list){const root=document.getElementById('results');if(!list.length){root.innerHTML='<div class="empty">Chưa có đối tác phù hợp hành trình này.</div>';return}root.innerHTML=list.map((a,i)=>`<article class="flight-card ${i===0?'best':''}"><div class="flight-top"><div class="airline"><div class="air-logo">${a.code}</div><div><div class="air-name">${a.name}${i===0?'<span class="best-tag">GIÁ THẤP NHẤT</span>':''}</div><div class="air-note">${a.note}</div></div></div><div class="timing"><div class="time"><strong>${a.depart}</strong><span>${currentFrom}</span></div><div class="line">${a.duration}</div><div class="time"><strong>${a.arrive}</strong><span>${currentTo}</span></div></div><div class="price"><strong>${fmt(a.price)}</strong><span>giá minh hoạ / 1 chiều</span></div><a class="book" href="${a.affiliate}" target="_blank" rel="nofollow sponsored noopener">Xem giá hãng →</a></div><div class="flight-bottom"><div class="features"><span>✈ Bay thẳng</span><span>◷ ${a.duration}</span><span>▣ Hành lý theo hạng vé</span></div><span class="sponsored">Liên kết tiếp thị</span></div></article>`).join('')}
+function searchFlights(){currentFrom=document.getElementById('from').value.trim()||'TP. Hồ Chí Minh';currentTo=document.getElementById('to').value.trim()||'Phú Quốc';const d=document.getElementById('depart').value||new Date().toISOString().slice(0,10);const f=factor(currentFrom,currentTo,d);currentFlights=airlines.map((a,i)=>({...a,price:Math.round((a.base*f+i*35000)/10000)*10000})).sort((a,b)=>a.price-b.price);document.getElementById('title').textContent=`${currentFrom} → ${currentTo}`;document.getElementById('summary').textContent=`${currentFlights.length} lựa chọn • ngày ${d.split('-').reverse().join('/')} • sắp xếp theo giá minh hoạ`;document.getElementById('tip').textContent=`Đang xem ${currentFrom} → ${currentTo}. Nếu lịch linh hoạt, thử ngày trước hoặc sau 1–2 ngày rồi kiểm tra lại trên website hãng.`;renderDates(d);render(currentFlights)}
+function sortFlights(mode){const list=[...currentFlights];if(mode==='airline')list.sort((a,b)=>a.name.localeCompare(b.name,'vi'));else list.sort((a,b)=>a.price-b.price);render(list)}
+function swapRoute(){const a=document.getElementById('from'),b=document.getElementById('to');[a.value,b.value]=[b.value,a.value];searchFlights()}
 const dt=new Date();dt.setDate(dt.getDate()+7);document.getElementById('depart').value=dt.toISOString().slice(0,10);searchFlights();
 </script>
 </body>
