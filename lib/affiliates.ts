@@ -8,8 +8,8 @@ type AffiliatePartner = {
 
 export const affiliates: Record<AffiliateKey, AffiliatePartner> = {
   flights: {
-    label: 'Flights',
-    href: null,
+    label: 'Vietnam Airlines',
+    href: 'https://go.isclix.com/deep_link/v6/5356313228598147852/6318680441596031865?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cudmlldG5hbWFpcmxpbmVzLmNvbS92bi92aS9ob21l',
     disclosure: 'Flight booking partner',
   },
   hotels: {
@@ -36,4 +36,8 @@ export const affiliates: Record<AffiliateKey, AffiliatePartner> = {
 
 export function isAffiliateKey(value: string): value is AffiliateKey {
   return value in affiliates;
+}
+
+export function hasAffiliate(key: AffiliateKey) {
+  return Boolean(affiliates[key].href);
 }
