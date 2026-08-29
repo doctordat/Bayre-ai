@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://vietnamgo.vercel.app';
+  const base = 'https://bayre-ai-1kcx-bice.vercel.app';
   const pages = [
     '',
     '/en',
+    '/en/explore',
+    '/en/planner',
     '/en/hanoi',
     '/en/da-nang-hoi-an',
     '/en/ho-chi-minh-city',
@@ -12,11 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/en/vietnam-itinerary-7-days',
     '/en/vietnam-itinerary-10-days',
     '/en/vietnam-itinerary-14-days',
+    '/en/vietnam-travel-cost',
+    '/en/vietnam-esim',
+    '/en/ha-long-bay-from-hanoi',
   ];
 
   return pages.map((path, index) => ({
     url: `${base}${path}`,
-    changeFrequency: 'weekly',
-    priority: index <= 1 ? 1 : 0.8,
+    changeFrequency: index <= 3 ? 'weekly' : 'monthly',
+    priority: index <= 1 ? 1 : index <= 3 ? 0.9 : 0.8,
   }));
 }
