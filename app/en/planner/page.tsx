@@ -90,8 +90,8 @@ export default async function PlannerResult({ searchParams }: { searchParams: Pa
         <p className="bookingIntro">Booking partners appear here only when a real partner link is connected. We do not display fake live prices.</p>
         <div className="actionGrid">
           {bookingItems.map((item, index) => {
-            const active = Boolean(affiliates[item.key].href);
-            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p>{active ? <a className="affiliateCta" href={`/go/${item.key}?src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check current options →</a> : <button disabled>Partner coming soon</button>}</article>;
+            const partner = affiliates[item.key].partners[0];
+            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p>{partner ? <a className="affiliateCta" href={`/go/${item.key}?partner=${partner.id}&src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check with {partner.label} →</a> : <button disabled>Partner coming soon</button>}</article>;
           })}
         </div>
         <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you.</div>

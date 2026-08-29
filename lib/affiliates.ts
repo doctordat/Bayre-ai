@@ -1,43 +1,38 @@
-export type AffiliateKey = 'flights' | 'hotels' | 'experiences' | 'transfers' | 'esim';
+export type AffiliateKey = 'flights' | 'hotels' | 'experiences' | 'transfers' | 'esim' | 'other';
 
-type AffiliatePartner = {
-  label: string;
-  href: string | null;
-  disclosure: string;
-};
+export type AffiliatePartner = { id: string; label: string; href: string };
+type AffiliateCategory = { label: string; disclosure: string; partners: AffiliatePartner[] };
 
-export const affiliates: Record<AffiliateKey, AffiliatePartner> = {
+export const affiliates: Record<AffiliateKey, AffiliateCategory> = {
   flights: {
-    label: 'Vietnam Airlines',
-    href: 'https://go.isclix.com/deep_link/v6/5356313228598147852/6318680441596031865?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cudmlldG5hbWFpcmxpbmVzLmNvbS92bi92aS9ob21l',
-    disclosure: 'Flight booking partner',
+    label: 'Flights', disclosure: 'Flight booking partners',
+    partners: [
+      { id: 'vietnam-airlines', label: 'Vietnam Airlines', href: 'https://shorten.asia/MhzpQnZq' },
+      { id: 'traveloka', label: 'Traveloka', href: 'https://shorten.asia/zxKud1Xm' },
+    ],
   },
   hotels: {
-    label: 'Hotels',
-    href: null,
-    disclosure: 'Accommodation booking partner',
+    label: 'Hotels', disclosure: 'Accommodation booking partners',
+    partners: [
+      { id: 'trip-com', label: 'Trip.com', href: 'https://shorten.asia/A7u3mnWY' },
+      { id: 'traveloka', label: 'Traveloka', href: 'https://shorten.asia/zxKud1Xm' },
+    ],
   },
   experiences: {
-    label: 'Tours & activities',
-    href: null,
-    disclosure: 'Experiences booking partner',
+    label: 'Tours & activities', disclosure: 'Experiences booking partners',
+    partners: [
+      { id: 'klook', label: 'Klook', href: 'https://shorten.asia/Tk7VKSKv' },
+      { id: 'trip-com', label: 'Trip.com', href: 'https://shorten.asia/A7u3mnWY' },
+    ],
   },
-  transfers: {
-    label: 'Transfers',
-    href: null,
-    disclosure: 'Ground transport booking partner',
-  },
-  esim: {
-    label: 'eSIM',
-    href: null,
-    disclosure: 'Connectivity partner',
-  },
+  transfers: { label: 'Transfers', disclosure: 'Ground transport booking partner', partners: [{ id: 'klook', label: 'Klook', href: 'https://shorten.asia/Tk7VKSKv' }] },
+  esim: { label: 'eSIM', disclosure: 'Connectivity partner', partners: [{ id: 'klook', label: 'Klook', href: 'https://shorten.asia/Tk7VKSKv' }] },
+  other: { label: 'Trains & more', disclosure: 'Multi-service travel partner', partners: [{ id: 'trip-com', label: 'Trip.com', href: 'https://shorten.asia/A7u3mnWY' }] },
 };
 
-export function isAffiliateKey(value: string): value is AffiliateKey {
-  return value in affiliates;
-}
-
-export function hasAffiliate(key: AffiliateKey) {
-  return Boolean(affiliates[key].href);
+export function isAffiliateKey(value: string): value is AffiliateKey { return value in affiliates; }
+export function hasAffiliate(key: AffiliateKey) { return affiliates[key].partners.length > 0; }
+export function getAffiliatePartner(key: AffiliateKey, partnerId?: string | null) {
+  const partners = affiliates[key].partners;
+  return partners.find((partner) => partner.id === partnerId) || partners[0] || null;
 }

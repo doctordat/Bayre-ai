@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { affiliates, type AffiliateKey } from '../lib/affiliates';
 
 const destinations = [
   { name: 'Hanoi', note: 'Old-world charm', description: 'Street-food mornings, lake walks and a thousand years of stories.', href: '/en/hanoi', className: 'hanoi', number: '01' },
@@ -17,6 +18,15 @@ const valueProps = [
   ['01', 'Built for first trips', 'Clear choices and realistic pacing, without the travel-planning rabbit hole.'],
   ['02', 'Independent advice', 'Useful recommendations first. Affiliate relationships are always disclosed.'],
   ['03', 'One route, fewer tabs', 'Plan the journey, then find the bookings that make each stop work.'],
+];
+
+const bookingProducts: { key: AffiliateKey; icon: string; title: string; description: string }[] = [
+  { key: 'flights', icon: '✈', title: 'Flights', description: 'Airlines and route comparison.' },
+  { key: 'hotels', icon: '⌂', title: 'Hotels', description: 'Stays for every stop on the route.' },
+  { key: 'experiences', icon: '◇', title: 'Experiences', description: 'Tours, cruises, tickets and day trips.' },
+  { key: 'transfers', icon: '↝', title: 'Transfers', description: 'Airport pickups and ground transport.' },
+  { key: 'esim', icon: '⌁', title: 'eSIM & Wi-Fi', description: 'Stay connected from arrival.' },
+  { key: 'other', icon: '═', title: 'Trains & more', description: 'Rail tickets and multi-service booking.' },
 ];
 
 export default function HomePage() {
@@ -92,10 +102,14 @@ export default function HomePage() {
         <div className="shell">
           <div className="bookingHeader"><div><span className="kicker">WHEN YOU&apos;RE READY</span><h2>Turn the route<br />into a real trip.</h2></div><p>Check the essential bookings in the order that makes sense. Partners that are not connected yet stay clearly marked as coming soon.</p></div>
           <div className="bookingCategories">
-            <a className="bookingCategory active" href="/go/flights?src=homepage&page=home" target="_blank" rel="sponsored nofollow noopener"><span className="bookingIcon">✈</span><small>BOOK NOW</small><h3>Flights</h3><p>Compare routes and check current fares.</p><b>Search flights →</b></a>
-            <article className="bookingCategory"><span className="bookingIcon">⌂</span><small>COMING SOON</small><h3>Hotels</h3><p>Find the right area to stay at every stop.</p><span className="soonPill">Partner pending</span></article>
-            <article className="bookingCategory"><span className="bookingIcon">◇</span><small>COMING SOON</small><h3>Experiences</h3><p>Food tours, cruises, tickets and day trips.</p><span className="soonPill">Partner pending</span></article>
-            <article className="bookingCategory"><span className="bookingIcon">↝</span><small>COMING SOON</small><h3>Transfers & eSIM</h3><p>Connect the practical pieces of your route.</p><span className="soonPill">Partner pending</span></article>
+            {bookingProducts.map((product) => (
+              <article className="bookingCategory active" key={product.key}>
+                <span className="bookingIcon">{product.icon}</span><small>PARTNERS CONNECTED</small><h3>{product.title}</h3><p>{product.description}</p>
+                <div className="partnerLinks">
+                  {affiliates[product.key].partners.map((partner) => <a href={`/go/${product.key}?partner=${partner.id}&src=homepage&page=home`} target="_blank" rel="sponsored nofollow noopener" key={partner.id}>{partner.label} <span>→</span></a>)}
+                </div>
+              </article>
+            ))}
           </div>
           <div className="affiliateDisclosure">Some booking links are affiliate links. VietnamGo may earn a commission at no extra cost to you.</div>
         </div>
