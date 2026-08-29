@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BayRẻ AI — So sánh vé máy bay</title>
+  <meta name="description" content="MVP so sánh vé máy bay và chuyển người dùng đến trang đặt vé chính thức qua affiliate link."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
+      --brand:#0f766e; --brand2:#115e59; --pill:#ecfdf5; --warn:#fff7ed; --shadow:0 10px 30px rgba(17,24,39,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--text)}
+    .wrap{max-width:980px;margin:auto;padding:28px 18px 56px}
+    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+    .logo{font-weight:800;font-size:22px}.logo span{color:var(--brand)}
+    .badge{font-size:12px;color:var(--brand2);background:var(--pill);border:1px solid #a7f3d0;padding:7px 10px;border-radius:999px}
+    .hero{background:linear-gradient(135deg,#0f766e,#134e4a);color:white;border-radius:24px;padding:32px;box-shadow:var(--shadow)}
+    .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.05;margin:0 0 10px}
+    .hero p{margin:0 0 24px;color:#d1fae5;max-width:700px}
+    .search{display:grid;grid-template-columns:1.1fr 1.1fr .8fr .8fr auto;gap:10px;background:white;padding:12px;border-radius:18px}
+    .field{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:white}
+    .field label{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+    input,select{width:100%;border:0;outline:0;font:inherit;color:var(--text);background:transparent}
+    button{border:0;cursor:pointer;font:inherit}
+    .go{background:#111827;color:white;border-radius:12px;padding:0 20px;font-weight:700}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+    .meta span{font-size:13px;color:var(--muted);background:#fff;padding:8px 10px;border:1px solid var(--line);border-radius:999px}
+    .section-title{display:flex;justify-content:space-between;align-items:end;margin:28px 0 12px}
+    .section-title h2{margin:0;font-size:22px}.section-title small{color:var(--muted)}
+    .results{display:grid;gap:12px}
+    .flight{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center}
+    .airline{display:flex;align-items:center;gap:12px}
+    .icon{width:44px;height:44px;border-radius:12px;background:#eef2ff;display:grid;place-items:center;font-weight:800}
+    .name{font-weight:700}.sub{color:var(--muted);font-size:13px;margin-top:4px}
+    .price{text-align:right}.price strong{display:block;font-size:20px}.price span{font-size:12px;color:var(--muted)}
+    .cta{background:var(--brand);color:#fff;border-radius:12px;padding:12px 15px;font-weight:700;text-decoration:none;display:inline-block;white-space:nowrap}
+    .cta:hover{background:var(--brand2)}
+    .note{margin-top:18px;background:var(--warn);border:1px solid #fed7aa;color:#9a3412;padding:14px 16px;border-radius:14px;font-size:13px;line-height:1.5}
+    .empty{background:#fff;border:1px dashed #cbd5e1;border-radius:18px;padding:32px;text-align:center;color:var(--muted)}
+    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:12px}
+    @media(max-width:800px){
+      .search{grid-template-columns:1fr 1fr}
+      .go{min-height:48px}
+      .flight{grid-template-columns:1fr}
+      .price{text-align:left}.cta{text-align:center}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">
+    <div class="logo">Bay<span>Rẻ</span> AI</div>
+    <div class="badge">MVP • Affiliate-ready</div>
+  </div>
+
+  <section class="hero">
+    <h1>Đi đâu cũng được.<br>Ưu tiên vé rẻ trước.</h1>
+    <p>Nhập hành trình, xem lựa chọn gợi ý và bấm sang trang hãng để kiểm tra giá thực tế mới nhất.</p>
+
+    <div class="search">
+      <div class="field">
+        <label>Điểm đi</label>
+        <input id="from" value="TP. Hồ Chí Minh" placeholder="VD: TP. Hồ Chí Minh">
+      </div>
+      <div class="field">
+        <label>Điểm đến</label>
+        <input id="to" value="Phú Quốc" placeholder="VD: Phú Quốc">
+      </div>
+      <div class="field">
+        <label>Ngày đi</label>
+        <input id="depart" type="date">
+      </div>
+      <div class="field">
+        <label>Hành khách</label>
+        <select id="pax">
+          <option>1 người</option><option>2 người</option><option>3 người</option><option>4 người</option>
+        </select>
+      </div>
+      <button class="go" onclick="searchFlights()">Tìm vé</button>
+    </div>
+  </section>
+
+  <div class="meta">
+    <span>✓ Không cần đăng nhập</span>
+    <span>✓ Chuyển thẳng đến hãng</span>
+    <span>✓ Có thể chạy miễn phí trên GitHub Pages</span>
+  </div>
+
+  <div class="section-title">
+    <h2 id="title">Gợi ý cho TP. Hồ Chí Minh → Phú Quốc</h2>
+    <small>Sắp xếp theo giá minh hoạ</small>
+  </div>
+
+  <div id="results" class="results"></div>
+
+  <div class="note">
+    <b>Lưu ý:</b> Giá trên MVP là giá minh hoạ để test UX/CTR, không phải giá realtime. Nút “Xem giá mới nhất” sẽ dẫn người dùng đến trang hãng qua affiliate link của bạn. Khi có API/nguồn dữ liệu giá hợp lệ, có thể thay phần giả lập bằng dữ liệu thật.
+  </div>
+
+  <footer>BayRẻ AI MVP • Dùng để kiểm thử nhu cầu và tỷ lệ click trước khi đầu tư backend/API.</footer>
+</div>
+
+<script>
+const airlines = [
+  {
+    name: "Vietnam Airlines",
+    code: "VN",
+    base: 1290000,
+    note: "Hãng truyền thống • hành lý tuỳ hạng vé",
+    affiliate: "https://go.isclix.com/deep_link/v6/5356313228598147852/6318680441596031865?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cudmlldG5hbWFpcmxpbmVzLmNvbS92bi92aS9ob21l"
+  },
+  {
+    name: "Sun PhuQuoc Airways",
+    code: "9G",
+    base: 1090000,
+    note: "Gợi ý cho hành trình Phú Quốc • kiểm tra giá trực tiếp",
+    affiliate: "https://go.isclix.com/deep_link/v6/5356313228598147852/6866678819944280655?sub1=724141&sub4=oneatapp&url_enc=aHR0cHM6Ly93d3cuc3VucGh1cXVvY2FpcndheXMuY29tL3ZuL3Zp"
+  }
+];
+
+function formatVND(n){
+  return new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n);
+}
+
+function getFactor(from,to,date){
+  let seed = (from+to+date).split('').reduce((a,c)=>a+c.charCodeAt(0),0);
+  return 0.92 + (seed % 22)/100;
+}
+
+function render(list){
+  const el = document.getElementById('results');
+  if(!list.length){ el.innerHTML = '<div class="empty">Chưa có đối tác phù hợp hành trình này.</div>'; return; }
+  el.innerHTML = list.map((a,i)=>`
+    <div class="flight">
+      <div class="airline">
+        <div class="icon">${a.code}</div>
+        <div>
+          <div class="name">${a.name} ${i===0 ? '<span style="font-size:11px;background:#ecfdf5;color:#047857;padding:4px 7px;border-radius:999px;margin-left:6px">Rẻ nhất</span>':''}</div>
+          <div class="sub">${a.note}</div>
+        </div>
+      </div>
+      <div class="price">
+        <strong>${formatVND(a.price)}</strong>
+        <span>giá minh hoạ / 1 chiều</span>
+      </div>
+      <a class="cta" href="${a.affiliate}" target="_blank" rel="nofollow sponsored noopener">Xem giá mới nhất →</a>
+    </div>
+  `).join('');
+}
+
+function searchFlights(){
+  const from = document.getElementById('from').value.trim() || 'TP. Hồ Chí Minh';
+  const to = document.getElementById('to').value.trim() || 'Phú Quốc';
+  const date = document.getElementById('depart').value || new Date().toISOString().slice(0,10);
+  document.getElementById('title').textContent = `Gợi ý cho ${from} → ${to}`;
+
+  const factor = getFactor(from,to,date);
+  let list = airlines.map((a,idx)=>(
+    {
+      ...a,
+      price: Math.round((a.base * factor + idx*35000)/10000)*10000
+    }
+  )).sort((a,b)=>a.price-b.price);
+
+  render(list);
+}
+
+const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+7);
+document.getElementById('depart').value = tomorrow.toISOString().slice(0,10);
+searchFlights();
+</script>
+</body>
+</html>
