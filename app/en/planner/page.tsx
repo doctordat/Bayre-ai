@@ -1,4 +1,4 @@
-import { affiliates, type AffiliateKey } from '../../../lib/affiliates';
+import { getAffiliatesByCategory, type AffiliateCategory } from '../../../lib/affiliates';
 
 type Params = Promise<Record<string, string | string[] | undefined>>;
 type Stop = { city: string; nights: number; why: string; ideas: string[] };
@@ -41,11 +41,13 @@ const plans: Record<string, Stop[]> = {
 };
 
 const budgetDaily: Record<string, number> = { budget: 45, mid: 85, premium: 170 };
-const bookingItems: { key: AffiliateKey; icon: string; title: string; text: string }[] = [
-  { key: 'flights', icon: '✈️', title: 'Flights to Vietnam', text: 'Compare arrival airports and international routes.' },
-  { key: 'hotels', icon: '🏨', title: 'Hotels by stop', text: 'Find stays in the right neighborhood for this route.' },
-  { key: 'experiences', icon: '🎟️', title: 'Tours & activities', text: 'Book cruises, food tours, tickets and day trips.' },
-  { key: 'transfers', icon: '🚐', title: 'Transfers', text: 'Connect airports, hotels and harder-to-reach stops.' },
+const bookingItems: { category: AffiliateCategory; icon: string; title: string; text: string }[] = [
+  { category: 'flights', icon: '✈️', title: 'Flights to Vietnam', text: 'Compare international and regional flight options.' },
+  { category: 'hotels', icon: '🏨', title: 'Hotels by stop', text: 'Compare stays for each city on your route.' },
+  { category: 'experiences', icon: '🎟️', title: 'Tours & activities', text: 'Book cruises, food tours, tickets and day trips.' },
+  { category: 'transfers', icon: '🚐', title: 'Transfers', text: 'Arrange airport transfers and local transport.' },
+  { category: 'esim', icon: '📶', title: 'Vietnam eSIM & Wi-Fi', text: 'Get connected before or after you land.' },
+  { category: 'trains', icon: '🚆', title: 'Train tickets', text: 'Compare rail options for longer domestic journeys.' },
 ];
 
 export default async function PlannerResult({ searchParams }: { searchParams: Params }) {
@@ -71,36 +73,24 @@ export default async function PlannerResult({ searchParams }: { searchParams: Pa
       <section className="routeSection">
         <div className="routeHeading"><span className="kicker">DAY-BY-DAY FRAMEWORK</span><h2>Your route</h2></div>
         <div className="timeline">
-          {route.map((stop, i) => (
-            <article className="stop" key={stop.city}>
-              <div className="num">{i + 1}</div>
-              <div className="stopBody">
-                <div className="stopTitle"><div><b>{stop.city}</b><span>{stop.nights} night{stop.nights > 1 ? 's' : ''}</span></div><span className="routeTag">Stop {i + 1}</span></div>
-                <p>{stop.why}</p>
-                <div className="ideaChips">{stop.ideas.map(idea => <span key={idea}>{idea}</span>)}</div>
-              </div>
-            </article>
-          ))}
+          {route.map((stop, i) => <article className="stop" key={stop.city}><div className="num">{i + 1}</div><div className="stopBody"><div className="stopTitle"><div><b>{stop.city}</b><span>{stop.nights} night{stop.nights > 1 ? 's' : ''}</span></div><span className="routeTag">Stop {i + 1}</span></div><p>{stop.why}</p><div className="ideaChips">{stop.ideas.map(idea => <span key={idea}>{idea}</span>)}</div></div></article>)}
         </div>
       </section>
 
       <section className="bookingFunnel">
         <span className="kicker light">TURN THE PLAN INTO A TRIP</span>
-        <h2>Price the pieces when you’re ready.</h2>
-        <p className="bookingIntro">Booking partners appear here only when a real partner link is connected. We do not display fake live prices.</p>
+        <h2>Compare your booking options.</h2>
+        <p className="bookingIntro">Choose a partner below to check current availability and prices. VietnamGo does not invent or cache live prices.</p>
         <div className="actionGrid">
           {bookingItems.map((item, index) => {
-            const active = Boolean(affiliates[item.key].href);
-            return <article key={item.key}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p>{active ? <a className="affiliateCta" href={`/go/${item.key}?src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check current options →</a> : <button disabled>Partner coming soon</button>}</article>;
+            const partners = getAffiliatesByCategory(item.category);
+            return <article key={item.category}><span className="actionIcon">{item.icon}</span><small>STEP {index + 1}</small><h3>{item.title}</h3><p>{item.text}</p><div className="partnerLinks">{partners.map(([key, partner]) => <a key={key} className="affiliateCta" href={`/go/${key}?src=planner&page=${days}-day-route`} target="_blank" rel="nofollow sponsored noopener">Check on {partner.label} →</a>)}</div></article>;
           })}
         </div>
-        <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you.</div>
+        <div className="disclosure">Some booking links are affiliate links. If you book through them, VietnamGo may earn a commission at no extra cost to you. Prices and availability are provided by the booking partner.</div>
       </section>
 
-      <section className="nextBox">
-        <div><span className="kicker">NOT QUITE RIGHT?</span><h2>Tune the route in seconds.</h2><p>Change trip length, travel style, budget or interests and generate another free starting point.</p></div>
-        <div className="heroActions"><a className="primary" href="/#planner">Edit my trip</a><a className="secondary" href="/#destinations">Explore destinations</a></div>
-      </section>
+      <section className="nextBox"><div><span className="kicker">NOT QUITE RIGHT?</span><h2>Tune the route in seconds.</h2><p>Change trip length, travel style, budget or interests and generate another free starting point.</p></div><div className="heroActions"><a className="primary" href="/#planner">Edit my trip</a><a className="secondary" href="/#destinations">Explore destinations</a></div></section>
     </main>
   );
 }
