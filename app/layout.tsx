@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './home.css';
+import './home-conversion.css';
 
 const BASE_URL = 'https://bayre-ai-1kcx-bice.vercel.app';
 
