@@ -1,28 +1,29 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://bayre-ai-1kcx-bice.vercel.app';
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://bayre-ai-1kcx-bice.vercel.app';
+  const now = new Date();
   const pages = [
-    '',
-    '/en',
-    '/en/explore',
-    '/en/guides',
-    '/en/planner',
-    '/en/hanoi',
-    '/en/da-nang-hoi-an',
-    '/en/ho-chi-minh-city',
-    '/en/phu-quoc',
-    '/en/vietnam-itinerary-7-days',
-    '/en/vietnam-itinerary-10-days',
-    '/en/vietnam-itinerary-14-days',
-    '/en/vietnam-travel-cost',
-    '/en/vietnam-esim',
-    '/en/ha-long-bay-from-hanoi',
+    { path: '/en', priority: 1, frequency: 'weekly' as const },
+    { path: '/en/guides', priority: 0.95, frequency: 'weekly' as const },
+    { path: '/en/explore', priority: 0.9, frequency: 'weekly' as const },
+    { path: '/en/vietnam-itinerary-10-days', priority: 0.95, frequency: 'monthly' as const },
+    { path: '/en/vietnam-itinerary-14-days', priority: 0.95, frequency: 'monthly' as const },
+    { path: '/en/vietnam-itinerary-7-days', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/vietnam-travel-cost', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/hanoi', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/da-nang-hoi-an', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/ho-chi-minh-city', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/phu-quoc', priority: 0.9, frequency: 'monthly' as const },
+    { path: '/en/ha-long-bay-from-hanoi', priority: 0.85, frequency: 'monthly' as const },
+    { path: '/en/vietnam-esim', priority: 0.8, frequency: 'monthly' as const },
   ];
 
-  return pages.map((path, index) => ({
+  return pages.map(({ path, priority, frequency }) => ({
     url: `${base}${path}`,
-    changeFrequency: index <= 4 ? 'weekly' : 'monthly',
-    priority: index <= 1 ? 1 : index <= 4 ? 0.9 : 0.8,
+    lastModified: now,
+    changeFrequency: frequency,
+    priority,
+    alternates: { languages: { en: `${base}${path}`, 'x-default': `${base}${path}` } },
   }));
 }
