@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.ITINERARY_EMAIL_FROM;
-  if (!apiKey || !from) {
+  const from = process.env.ITINERARY_EMAIL_FROM || 'VietnamGo <onboarding@resend.dev>';
+  if (!apiKey) {
     console.info('[email-itinerary-not-configured]', JSON.stringify({ arrival: String(trip.arrival), days: String(trip.days), travelers: Number(trip.travelers || 0), at: new Date().toISOString() }));
     return NextResponse.json({ error: 'Email delivery is not configured yet.' }, { status: 503 });
   }
