@@ -5,6 +5,7 @@ import './home.css';
 import './home-conversion.css';
 import './email-trip.css';
 import './planner-polish.css';
+import './home-v2.css';
 import EmailTripWidget from './EmailTripWidget';
 
 const BASE_URL = 'https://bayre-ai-1kcx-bice.vercel.app';
