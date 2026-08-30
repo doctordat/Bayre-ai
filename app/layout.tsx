@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import './home.css';
 import './home-conversion.css';
+import './email-trip.css';
+import EmailTripWidget from './EmailTripWidget';
 
 const BASE_URL = 'https://bayre-ai-1kcx-bice.vercel.app';
 
@@ -45,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         {children}
+        <EmailTripWidget />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </body>
     </html>
