@@ -43,9 +43,9 @@ export default function HomePage() {
           <div className="heroCopy">
             <div className="eyebrow">YOUR VIETNAM, MADE SIMPLE</div>
             <h1>Go further.<br /><em>Plan lighter.</em></h1>
-            <p className="lead">See real destinations, choose a realistic A/B/C budget, build a route and then book the pieces that make it work.</p>
-            <div className="heroActions"><a className="primary warm" href="#planner">Build my Vietnam trip <span>→</span></a><Link className="textLink" href="/en/explore">Real photos & budget guide <span>↗</span></Link></div>
-            <div className="heroProof"><span>✓ No sign-up</span><span>✓ Free to use</span><span>✓ Planning estimates, not fake live prices</span></div>
+            <p className="lead">Tell us where you are flying from, your dates and travel style. VietnamGo builds a sensible Vietnam route, estimates the budget, then helps you book the pieces.</p>
+            <div className="heroActions"><a className="primary warm" href="#planner">Build my Vietnam trip <span>→</span></a><Link className="textLink" href="/en/guides">Read Vietnam travel guides <span>↗</span></Link></div>
+            <div className="heroProof"><span>✓ No sign-up</span><span>✓ Free route planner</span><span>✓ Live prices stay with booking partners</span></div>
           </div>
           <div className="heroVisual" style={{ backgroundImage: "linear-gradient(rgba(15,46,37,.08),rgba(15,46,37,.22)),url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1500&q=85')", backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Real Vietnam travel photography">
             <div className="floatingStamp"><span>START HERE</span><b>VN</b><small>8°–23° N</small></div>
@@ -56,15 +56,24 @@ export default function HomePage() {
 
       <section id="planner" className="plannerWrap">
         <div className="shell">
-          <div className="sectionHead plannerHead"><div><span className="kicker">FREE TRIP PLANNER</span><h2>Tell us your travel rhythm.</h2></div><p>Choose who is going, how long you have, your A/B/C spending style and your travel mood.</p></div>
-          <form className="planner" action="/en/planner">
-            <label><span>01 · Who&apos;s going?</span><select name="style" defaultValue="couple"><option value="solo">Solo traveler</option><option value="couple">Couple</option><option value="family">Family</option><option value="friends">Friends</option></select></label>
-            <label><span>02 · How long?</span><select name="days" defaultValue="10"><option value="7">7 days</option><option value="10">10 days</option><option value="14">14 days</option><option value="21">21 days</option></select></label>
-            <label><span>03 · Your budget</span><select name="budget" defaultValue="mid"><option value="budget">A · Smart budget</option><option value="mid">B · Comfortable</option><option value="premium">C · Premium</option></select></label>
-            <label><span>04 · Your travel mood</span><select name="interest" defaultValue="mix"><option value="mix">A bit of everything</option><option value="food">Food & culture</option><option value="beach">Beaches & downtime</option><option value="nature">Nature & adventure</option></select></label>
-            <button className="primary plannerButton" type="submit">Create my route <span aria-hidden="true">→</span></button>
+          <div className="sectionHead plannerHead"><div><span className="kicker">FREE VIETNAM TRIP SEARCH</span><h2>Start with the trip you actually want to take.</h2></div><p>Enter the basics. We use them to shape the itinerary and estimate — not to pretend we have live airline inventory.</p></div>
+          <form className="travelSearch" action="/en/planner">
+            <div className="searchPrimary">
+              <label className="searchField wide"><span>From</span><input name="origin" type="text" placeholder="e.g. London, Sydney, Berlin" required /></label>
+              <label className="searchField wide"><span>Arrive in Vietnam</span><select name="arrival" defaultValue="Hanoi"><option>Hanoi</option><option>Da Nang</option><option>Ho Chi Minh City</option><option>Phu Quoc</option><option value="Vietnam">Not sure yet</option></select></label>
+              <label className="searchField"><span>Depart</span><input name="depart" type="date" /></label>
+              <label className="searchField"><span>Return</span><input name="return" type="date" /></label>
+              <label className="searchField"><span>Travelers</span><select name="travelers" defaultValue="2"><option value="1">1 traveler</option><option value="2">2 travelers</option><option value="3">3 travelers</option><option value="4">4 travelers</option><option value="5">5 travelers</option><option value="6">6 travelers</option></select></label>
+            </div>
+            <div className="searchSecondary">
+              <label><span>Trip length</span><select name="days" defaultValue="10"><option value="7">7 days</option><option value="10">10 days</option><option value="14">14 days</option></select></label>
+              <label><span>Budget</span><select name="budget" defaultValue="mid"><option value="budget">A · Smart budget</option><option value="mid">B · Comfortable</option><option value="premium">C · Premium</option></select></label>
+              <label><span>Travel style</span><select name="style" defaultValue="couple"><option value="solo">Solo</option><option value="couple">Couple</option><option value="friends">Friends</option><option value="family">Family</option></select></label>
+              <label><span>What matters most?</span><select name="interest" defaultValue="mix"><option value="mix">A bit of everything</option><option value="food">Food & culture</option><option value="beach">Beaches & downtime</option><option value="nature">Nature & adventure</option></select></label>
+              <button className="primary plannerButton searchButton" type="submit"><span>Build my trip</span><span aria-hidden="true">→</span></button>
+            </div>
           </form>
-          <p className="plannerNote">No account needed. Your route opens instantly.</p>
+          <div className="searchTrust"><span>Planning estimate only</span><span>•</span><span>No account required</span><span>•</span><span>Current booking prices come from partners</span></div>
         </div>
       </section>
 
@@ -114,7 +123,7 @@ export default function HomePage() {
       </section>
 
       <section className="finalCta shell"><span className="ctaCompass" aria-hidden="true">✦</span><div><span className="kicker">YOUR TRIP STARTS HERE</span><h2>Vietnam is a big idea.<br />Let&apos;s make it a plan.</h2></div><a className="primary warm" href="#planner">Build my free route <span>→</span></a></section>
-      <footer className="siteFooter"><div className="shell footer"><b>VietnamGo<span>.</span></b><span>Independent Vietnam travel planning for curious first-time visitors.</span><div><a href="#planner">Planner</a><Link href="/en/explore">Explore</Link><a href="#book">Affiliate disclosure</a></div></div></footer>
+      <footer className="siteFooter"><div className="shell footer"><b>VietnamGo<span>.</span></b><span>Independent Vietnam travel planning for curious first-time visitors.</span><div><a href="#planner">Planner</a><Link href="/en/guides">Guides</Link><Link href="/en/explore">Explore</Link><a href="#book">Affiliate disclosure</a></div></div></footer>
     </main>
   );
 }
