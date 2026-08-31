@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     default: 'Vietnam Trip Planner & Travel Guides | VietnamGo',
     template: '%s | VietnamGo',
   },
-  description: 'Plan your Vietnam trip with practical 7, 10 and 14-day itineraries, destination guides, travel cost estimates and booking options for flights, hotels, tours, transfers and eSIM.',
+  description: 'Plan a Vietnam trip with practical 7, 10 and 14-day itineraries, destination guides, realistic travel cost estimates and booking options for flights, hotels, tours, transfers and eSIM.',
   applicationName: 'VietnamGo',
   keywords: ['Vietnam trip planner', 'Vietnam itinerary', 'Vietnam travel guide', 'Vietnam travel cost', 'Vietnam itinerary 10 days', 'Vietnam itinerary 2 weeks', 'Hanoi travel guide', 'Hoi An travel guide', 'Phu Quoc travel'],
   alternates: { canonical: '/en', languages: { 'en': '/en', 'x-default': '/en' } },
   openGraph: {
     title: 'Vietnam Trip Planner & Travel Guides | VietnamGo',
-    description: 'Build a practical Vietnam itinerary with destination guides, budget estimates and connected booking options.',
+    description: 'Plan Vietnam with clear routes, destination advice, realistic budgets and connected booking options.',
     url: '/en',
     siteName: 'VietnamGo',
     type: 'website',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vietnam Trip Planner & Travel Guides | VietnamGo',
-    description: 'Practical Vietnam itineraries, destination guides, budgets and booking options in one place.',
+    description: 'Vietnam itineraries, destination guides, realistic budgets and booking options for first-time visitors.',
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
 };
