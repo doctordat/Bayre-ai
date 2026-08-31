@@ -2,9 +2,11 @@
 
 _Date: 2026-08-31 · Google SERP/PAA sampled with US, UK and Australia locales_
 
-## Method and caution
+## Method, evidence level and limitations
 
-Queries were sampled in English using Google locale parameters (`gl=us`, `gl=gb`, `gl=au`). PAA and visible result phrasing are directional demand evidence, not factual sources. Visa, entry, health and changing ticket information must be checked against official sources and date-stamped before publication.
+Queries were sampled in English using Google locale parameters (`gl=us`, `gl=gb`, `gl=au`). This is **qualitative SERP evidence only**: PAA, AI Overview and visible result phrasing indicate recurring question shapes, but they do **not** prove search volume, trend direction, ranking difficulty or commercial opportunity. The current pass does not yet include Keyword Planner/Google Trends volume, Search Console impressions, German-language evidence, or a full review of 2–3 trusted organic results per cluster.
+
+Treat the matrix below as a hypothesis/prioritization input, not a market-size conclusion. Before publishing visa, entry, health, weather, transport or ticket facts, read official/primary sources, record the source URL and add a `checked on` date. PAA snippets are never a factual source.
 
 ## Query-intent matrix
 
@@ -58,8 +60,12 @@ Queries were sampled in English using Google locale parameters (`gl=us`, `gl=gb`
 - Audience variants (solo, family, couple) only after Search Console shows demand.
 - Currency-specific cost content should remain conversions/notes, not duplicate pages.
 
-## Next three content assets
+## Research gate before implementation
 
-1. **Vietnam First-Time Guide** — strongest cross-cluster hub and internal-link source.
-2. **Best Time to Visit Vietnam** — clear uncovered demand with regional decision need.
-3. **Vietnam Travel Cost deep expansion** — existing commercial page already matches high-intent UK/US questions.
+Before coding the three candidates below, add an organic-source table for each cluster with title, URL, publisher type (official/editorial/forum/commercial), content angle and access date. Add Google Trends, Keyword Planner or Search Console evidence when available; otherwise preserve the qualitative label. Germany requires a separate German-language SERP pass.
+
+## Next three content candidates (not volume-validated)
+
+1. **Vietnam First-Time Guide** — cross-cluster pillar and internal-link source; keep it distinct from itinerary pages.
+2. **Best Time to Visit Vietnam** — regional weather decision need; avoid claiming one universal best month.
+3. **Vietnam Travel Cost deep expansion** — expand the existing URL with assumptions/exclusions and 7/10/14-day scenarios.
