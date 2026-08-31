@@ -1,0 +1,5 @@
+[build]
+  command = "npm run build"
+
+# Netlify's Next.js runtime detects App Router, middleware, route handlers,
+# and deploys the generated server functions; do not set a static publish dir.

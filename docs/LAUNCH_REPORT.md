@@ -4,7 +4,7 @@ _Date: 2026-08-31 · Execution cycle: initial P0 audit_
 
 | Launch condition | Status | Evidence / blocker |
 |---|---|---|
-| Production domain + HTTPS | BLOCKED | No production browser/Vercel verification in this cycle |
+| Production domain + HTTPS | BLOCKED | Netlify migration config is prepared, but no Netlify CLI/credentials or deploy URL is available in this environment |
 | Homepage desktop/mobile | BLOCKED | Source inspected; rendered QA not run |
 | Planner works | PASS (source) | Deterministic planner route and 7/10/14 inputs present; production not verified |
 | Affiliate redirects | PASS (tested routes) | Flights Vietnam Airlines/Traveloka, hotels Trip.com/Traveloka, activities/transfers/eSIM Klook and other Trip.com returned AccessTrade tracking URLs; no booking performed |
