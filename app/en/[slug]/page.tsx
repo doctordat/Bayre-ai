@@ -195,7 +195,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
     { question: 'How should I use this guide with the planner?', answer: 'Use the recommendations here as a starting preset, then adjust trip length, budget, style and interests in the free VietnamGo planner.' },
   ];
   const preset = plannerPresets[slug];
-  const plannerHref = preset ? `/en/planner?days=${preset.days}&arrival=${encodeURIComponent(preset.arrival)}&style=couple&budget=${preset.budget}&interest=${preset.interest}` : '/#planner';
+  const plannerHref = preset ? `/en/planner?${new URLSearchParams({ days: preset.days, arrival: preset.arrival, style: 'couple', budget: preset.budget, interest: preset.interest }).toString()}` : '/#planner';
   const bookingHref = page.bookingKey ? `/go/${page.bookingKey}?src=seo&page=${slug}` : '/#book';
 
   const articleJsonLd = {

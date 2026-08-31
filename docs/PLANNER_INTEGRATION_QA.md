@@ -21,4 +21,9 @@ The dynamic guide page builds `/en/planner` URLs from a typed `plannerPresets` m
 
 ## Verification
 
-Build/type check passed and all 10 presets map to valid planner dimensions. Production rendered QA should be repeated after the next Netlify deploy; Search Console/domain work remains separate.
+- Build/type check passed and all 10 presets map to valid planner dimensions.
+- Local browser QA: clicking the 10-day itinerary CTA produced `/en/planner?days=10&arrival=Hanoi&style=couple&budget=mid&interest=mix`; result showed Hanoi first stop, 10 days, B · Comfortable and the expected classic route.
+- Invalid query QA: `/en/planner?days=999&interest=bad&budget=invalid&arrival=Unknown` rendered a route and no error, safely falling back to the planner defaults.
+- Affiliate links remained present on the planner result.
+
+Production rendered QA should be repeated after Netlify’s next deploy; Search Console/domain work remains separate.
