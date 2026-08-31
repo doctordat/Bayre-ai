@@ -4,10 +4,10 @@ _Date: 2026-08-31 · Execution cycle: initial P0 audit_
 
 | Launch condition | Status | Evidence / blocker |
 |---|---|---|
-| Production domain + HTTPS | BLOCKED | Netlify migration config is prepared, but no Netlify CLI/credentials or deploy URL is available in this environment |
+| Production domain + HTTPS | PARTIAL | Netlify site deployed at `https://silly-truffle-8677bb.netlify.app`; HTTPS and rendered homepage work, but this is still a temporary/private site URL |
 | Homepage desktop/mobile | BLOCKED | Source inspected; rendered QA not run |
 | Planner works | PASS (source) | Deterministic planner route and 7/10/14 inputs present; production not verified |
-| Affiliate redirects | PASS (tested routes) | Flights Vietnam Airlines/Traveloka, hotels Trip.com/Traveloka, activities/transfers/eSIM Klook and other Trip.com returned AccessTrade tracking URLs; no booking performed |
+| Affiliate redirects | PASS (tested on Netlify) | Netlify `/go/experiences?partner=klook...` returned AccessTrade tracking URL with encoded Klook destination; previous matrix also covered remaining partners |
 | Affiliate tracking | PARTIAL | `/go/[key]` logs tripId/key/partner/source/page; no durable analytics sink |
 | robots | PASS (source) | Disallows `/go/` and `/api/`; production response unverified |
 | sitemap | PARTIAL | Canonical-only source list present; final hostname and coverage pending |
