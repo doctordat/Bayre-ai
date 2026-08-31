@@ -1,6 +1,8 @@
 # VietnamGo — Affiliate QA Matrix
 
-_Date: 2026-08-31 · Source-level QA; external redirect destination remains unverified._
+_Date: 2026-08-31 · Production preview QA performed without booking._
+
+Observed: all tested routes returned an AccessTrade tracking URL. Vietnam Airlines resolved through its affiliate URL to `vietnamairlines.com`; Traveloka, Trip.com and Klook resolved to AccessTrade tracking URLs containing encoded partner destinations. No booking/payment was performed.
 
 | Page/source | CTA | `/go` route | Partner | Expected destination | Status |
 |---|---|---|---|---|---|

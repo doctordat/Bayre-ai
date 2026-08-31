@@ -7,7 +7,7 @@ _Date: 2026-08-31 · Execution cycle: initial P0 audit_
 | Production domain + HTTPS | BLOCKED | No production browser/Vercel verification in this cycle |
 | Homepage desktop/mobile | BLOCKED | Source inspected; rendered QA not run |
 | Planner works | PASS (source) | Deterministic planner route and 7/10/14 inputs present; production not verified |
-| Affiliate redirects | PARTIAL | Source mapping and redirect logic present; shortened destination chain not manually tested |
+| Affiliate redirects | PASS (tested routes) | Flights Vietnam Airlines/Traveloka, hotels Trip.com/Traveloka, activities/transfers/eSIM Klook and other Trip.com returned AccessTrade tracking URLs; no booking performed |
 | Affiliate tracking | PARTIAL | `/go/[key]` logs tripId/key/partner/source/page; no durable analytics sink |
 | robots | PASS (source) | Disallows `/go/` and `/api/`; production response unverified |
 | sitemap | PARTIAL | Canonical-only source list present; final hostname and coverage pending |
