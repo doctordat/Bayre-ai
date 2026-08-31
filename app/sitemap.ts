@@ -22,6 +22,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/attractions/temple-of-literature-hanoi', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/my-khe-beach', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/marble-mountains-da-nang', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/hanoi-old-quarter', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/son-tra-peninsula', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ba-na-hills', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/hoi-an-ancient-town', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/dragon-bridge-da-nang', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/hanoi-old-quarter', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/son-tra-peninsula', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ba-na-hills', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/hoi-an-ancient-town', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/dragon-bridge-da-nang', priority: 0.75, frequency: 'monthly' as const },
   ];
 
   return pages.map(({ path, priority, frequency }) => ({
