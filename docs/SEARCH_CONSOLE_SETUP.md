@@ -2,7 +2,7 @@
 
 ## Status: BLOCKED / NOT VERIFIED
 
-No production-domain or Google Search Console session was available during this execution cycle. Do not claim the property is verified, the sitemap submitted, or URLs indexed.
+The Netlify subdomain is public and technically crawlable, but it is a temporary hosting URL. Do **not** verify/submit/index this temporary hostname as the long-term SEO property. Choose and attach the official VietnamGo custom domain first, then set `NEXT_PUBLIC_SITE_URL` in Netlify and redeploy. Do not claim the property is verified, the sitemap submitted, or URLs indexed.
 
 ## Owner checklist
 

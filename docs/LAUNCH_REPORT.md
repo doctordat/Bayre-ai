@@ -21,4 +21,4 @@ _Date: 2026-08-31 · Execution cycle: initial P0 audit_
 
 ## Decision
 
-**NOT LAUNCHED.** The code has a credible MVP foundation, but production/domain/affiliate/Search Console verification and unique content expansion remain before public acquisition.
+**NOT LAUNCHED.** The code has a credible MVP foundation, but the temporary Netlify subdomain is not an acceptable long-term SEO property. Choose the official VietnamGo domain, set `NEXT_PUBLIC_SITE_URL`, verify canonical/robots/sitemap on that host, then complete Search Console verification/submission and unique content expansion before public acquisition.
