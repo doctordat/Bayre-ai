@@ -17,6 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/phu-quoc', priority: 0.9, frequency: 'monthly' as const },
     { path: '/en/ha-long-bay-from-hanoi', priority: 0.85, frequency: 'monthly' as const },
     { path: '/en/vietnam-esim', priority: 0.8, frequency: 'monthly' as const },
+    { path: '/en/attractions/hoan-kiem-lake', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ho-chi-minh-mausoleum', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/temple-of-literature-hanoi', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/my-khe-beach', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/marble-mountains-da-nang', priority: 0.75, frequency: 'monthly' as const },
   ];
 
   return pages.map(({ path, priority, frequency }) => ({
