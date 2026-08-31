@@ -155,6 +155,19 @@ const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionR
   'ha-long-bay-from-hanoi': { decisionTitle: 'Day trip or overnight?', decisionRows: [{ label: 'Day trip', detail: 'Faster, simpler and uses no hotel night', fit: '7-day itineraries' }, { label: 'One night', detail: 'More time on the bay and less rushing', fit: '10–14 day itineraries' }, { label: 'Skip it', detail: 'Use the time for Ninh Binh or deeper Hanoi', fit: 'Travelers sensitive to long transfers' }] },
 };
 
+const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
+  hanoi: { days: '7', arrival: 'Hanoi', interest: 'food', budget: 'mid' },
+  'ho-chi-minh-city': { days: '7', arrival: 'Ho Chi Minh City', interest: 'food', budget: 'mid' },
+  'da-nang-hoi-an': { days: '10', arrival: 'Da Nang', interest: 'beach', budget: 'mid' },
+  'phu-quoc': { days: '14', arrival: 'Phu Quoc', interest: 'beach', budget: 'mid' },
+  'vietnam-itinerary-7-days': { days: '7', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-itinerary-10-days': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-itinerary-14-days': { days: '14', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-travel-cost': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-esim': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'ha-long-bay-from-hanoi': { days: '10', arrival: 'Hanoi', interest: 'nature', budget: 'mid' },
+};
+
 export function generateStaticParams() { return Object.keys(pages).map((slug) => ({ slug })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -181,7 +194,8 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
     { question: `What is the practical first step for ${page.title.toLowerCase()}?`, answer: page.intro + ' Start with the number of nights and your preferred pace before comparing booking options.' },
     { question: 'How should I use this guide with the planner?', answer: 'Use the recommendations here as a starting preset, then adjust trip length, budget, style and interests in the free VietnamGo planner.' },
   ];
-  const plannerHref = page.plannerDays ? `/en/planner?days=${page.plannerDays}&style=couple&budget=mid&interest=mix` : '/#planner';
+  const preset = plannerPresets[slug];
+  const plannerHref = preset ? `/en/planner?days=${preset.days}&arrival=${encodeURIComponent(preset.arrival)}&style=couple&budget=${preset.budget}&interest=${preset.interest}` : '/#planner';
   const bookingHref = page.bookingKey ? `/go/${page.bookingKey}?src=seo&page=${slug}` : '/#book';
 
   const articleJsonLd = {
@@ -214,7 +228,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
         <aside>
           <span className="kicker">FREE PLANNER</span>
           <h3>Turn this guide into your own route.</h3>
-          <p>Choose trip length, budget, travel style and interests. VietnamGo will build a practical starting itinerary.</p>
+          <p>This guide preloads a useful starting point in the planner. You can change trip length, arrival city, budget, travel style and interests before building your route.</p>
           <a className="primary" href={plannerHref}>{page.cta}</a>
           {page.bookingKey && <a className="secondary" style={{ marginTop: 10, display: 'inline-flex' }} href={bookingHref} target="_blank" rel="sponsored nofollow noopener">{page.bookingLabel || 'Check booking options'} →</a>}
           <small style={{ display: 'block', marginTop: 14, color: '#718078', lineHeight: 1.5 }}>Some links are affiliate links. VietnamGo may earn a commission at no extra cost to you. Prices and availability come from the booking partner.</small>
