@@ -8,7 +8,7 @@ import './planner-polish.css';
 import './home-v2.css';
 import EmailTripWidget from './EmailTripWidget';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bayre-ai-1kcx-bice.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://silly-truffle-8677bb.netlify.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://bayre-ai-1kcx-bice.vercel.app';
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://silly-truffle-8677bb.netlify.app';
   const now = new Date();
   const pages = [
     { path: '/en', priority: 1, frequency: 'weekly' as const },
