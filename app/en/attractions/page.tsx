@@ -1,0 +1,22 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'Vietnam Attractions & Things to Do', description: 'Plan Vietnam attractions by city, time and ticket needs: Hanoi, Da Nang and Hoi An visitor guides for first-time travelers.', alternates: { canonical: '/en/attractions' } };
+
+const groups = [
+  { city: 'Hanoi', intro: 'Compact city landmarks, history and walkable neighborhoods.', items: [
+    ['Hoan Kiem Lake', '/en/attractions/hoan-kiem-lake', 'Free landmark · 45–90 min', 'A simple first walk around Hanoi’s central lake.'],
+    ['Hanoi Old Quarter', '/en/attractions/hanoi-old-quarter', 'Neighborhood · half day', 'Food, walking, shopping and the best first-time base.'],
+    ['Ho Chi Minh Mausoleum', '/en/attractions/ho-chi-minh-mausoleum', 'Access rules · 1–2 hours', 'A history visit where official access guidance matters.'],
+    ['Temple of Literature', '/en/attractions/temple-of-literature-hanoi', 'Ticketed culture · 60–90 min', 'A calm architecture and history stop near central Hanoi.'],
+  ] },
+  { city: 'Da Nang & Hoi An', intro: 'Beach, viewpoints, heritage and structured day trips.', items: [
+    ['My Khe Beach', '/en/attractions/my-khe-beach', 'Public beach · 1–3 hours', 'The easiest flexible downtime on the central coast.'],
+    ['Marble Mountains', '/en/attractions/marble-mountains-da-nang', 'Ticketed nature · 2–3 hours', 'Caves, pagodas and viewpoints with stairs to plan for.'],
+    ['Son Tra Peninsula', '/en/attractions/son-tra-peninsula', 'Nature route · 3–5 hours', 'Viewpoints and coastal roads shaped by weather and access.'],
+    ['Ba Na Hills', '/en/attractions/ba-na-hills', 'Full-day ticketed trip', 'A planned mountain day; verify current official ticket information.'],
+    ['Hoi An Ancient Town', '/en/attractions/hoi-an-ancient-town', 'Heritage visit · 2–4 hours', 'Morning details and evening atmosphere in the old town.'],
+    ['Dragon Bridge', '/en/attractions/dragon-bridge-da-nang', 'Free landmark · 30–90 min', 'An easy riverfront evening stop; verify event timing.'],
+  ] },
+];
+
+export default function AttractionsPage() { return <main className="attractionsHub shell"><a className="brand" href="/">VietnamGo<span>.</span></a><header><span className="kicker">ATTRACTIONS BY CITY</span><h1>Know what is worth adding to your Vietnam route.</h1><p>Use practical visitor guides to decide what to see, how long to allow, whether tickets matter and where each attraction fits in your itinerary.</p></header>{groups.map(group => <section key={group.city}><div className="hubHeading"><span className="kicker">{group.city.toUpperCase()}</span><h2>{group.city}</h2><p>{group.intro}</p></div><div className="attractionCards">{group.items.map(([name,href,meta,desc]) => <a className="attractionCard" href={href} key={href}><span className="kicker">{meta}</span><h3>{name}</h3><p>{desc}</p><strong>Read visitor guide →</strong></a>)}</div></section>)}<section className="hubCta"><span className="kicker">NEXT STEP</span><h2>Turn attractions into a route.</h2><p>Choose your days, arrival city, pace and budget in the free VietnamGo planner.</p><a className="primary" href="/#planner">Build my Vietnam trip →</a></section></main>; }
