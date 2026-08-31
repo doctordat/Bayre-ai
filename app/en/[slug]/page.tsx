@@ -157,6 +157,14 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
   const { slug } = await params;
   const page = pages[slug];
   if (!page) notFound();
+  const isItinerary = page.eyebrow === 'ITINERARY';
+  const planningNote = isItinerary
+    ? 'Protect real time in each base: arrival days are slower, domestic flights use half a day, and one flexible day makes weather and delays easier to absorb.'
+    : 'Make the main decision first, then book only the pieces that support it. VietnamGo gives planning guidance; live prices and availability remain with booking partners.';
+  const faq = [
+    { question: `What is the practical first step for ${page.title.toLowerCase()}?`, answer: page.intro + ' Start with the number of nights and your preferred pace before comparing booking options.' },
+    { question: 'How should I use this guide with the planner?', answer: 'Use the recommendations here as a starting preset, then adjust trip length, budget, style and interests in the free VietnamGo planner.' },
+  ];
   const plannerHref = page.plannerDays ? `/en/planner?days=${page.plannerDays}&style=couple&budget=mid&interest=mix` : '/#planner';
   const bookingHref = page.bookingKey ? `/go/${page.bookingKey}?src=seo&page=${slug}` : '/#book';
 
@@ -184,6 +192,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
           <h2>Quick plan</h2>
           <ul>{page.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
           {page.sections.map((section) => <section key={section.heading} style={{ marginTop: 34 }}><h2>{section.heading}</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{section.text}</p></section>)}
+          <section style={{ marginTop: 34 }}><h2>Planning note</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{planningNote}</p></section>
         </div>
         <aside>
           <span className="kicker">FREE PLANNER</span>
@@ -194,6 +203,8 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
           <small style={{ display: 'block', marginTop: 14, color: '#718078', lineHeight: 1.5 }}>Some links are affiliate links. VietnamGo may earn a commission at no extra cost to you. Prices and availability come from the booking partner.</small>
         </aside>
       </section>
+
+      <section className="seoFaq"><h2>Frequently asked questions</h2>{faq.map((item) => <article key={item.question}><h3>{item.question}</h3><p style={{ lineHeight: 1.7, color: '#59675f' }}>{item.answer}</p></article>)}</section>
 
       <section className="seoRelated" aria-labelledby="related-guides">
         <h2 id="related-guides">Related Vietnam planning guides</h2>
