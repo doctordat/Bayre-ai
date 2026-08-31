@@ -6,3 +6,14 @@
 @media(max-width:1050px){.travelHero{min-height:720px}.searchPrimary{grid-template-columns:1fr 1fr 1fr}.plannerWrap{margin-top:-95px}.searchTrust{color:#173f32;text-shadow:none}.plannerWrap .shell{padding-bottom:8px}}
 @media(max-width:900px){.travelHero{min-height:700px;padding-bottom:120px}.heroGrid{padding-top:90px;min-height:610px}.heroCopy{max-width:680px}.heroCopy h1{font-size:72px}.plannerWrap{margin-top:-92px}.processGrid{grid-template-columns:1fr}.processGrid article{border-radius:18px}}
 @media(max-width:620px){.travelHero{min-height:720px;padding-bottom:155px;background-position:58% center}.travelHero:after{background:linear-gradient(180deg,rgba(7,30,23,.5) 0%,rgba(7,30,23,.58) 70%,rgba(7,30,23,.72) 100%)}.heroGrid{padding-top:62px;min-height:565px}.heroCopy h1{font-size:54px;line-height:.91;margin-top:18px}.heroCopy .lead{font-size:15px}.heroCopy .heroActions{gap:8px}.heroCopy .heroActions .primary{width:auto}.heroProof{gap:8px}.plannerWrap{margin-top:-135px}.travelSearch{border-radius:20px;padding:8px}.searchPrimary,.searchSecondary{grid-template-columns:1fr}.searchPrimary .searchField,.searchSecondary label{padding:13px 14px;border-right:0!important;border-bottom:1px solid #e7ebe7}.searchButton{margin:8px;min-height:56px}.searchTrust{color:#53645b;text-shadow:none;background:#fff;border-radius:0 0 16px 16px;margin:0 8px;padding:10px}.processBand{padding-top:22px}}
+
+/* Final visual pass: one calmer, editorial system over the legacy homepage layers. */
+:root{--ink:#14251e;--muted:#63736b;--paper:#f7f8f4;--line:rgba(20,55,42,.12);--coral:#e8754e;--mint:#a8e5bf}
+body{background:var(--paper);color:var(--ink)}
+.nav{height:82px}.brand{font-size:25px;letter-spacing:-1.2px}.brand span{color:var(--coral)}
+.nav nav{gap:30px;color:#40564b}.nav nav a:hover{color:var(--coral)}
+.primary,.secondary{min-height:48px;transition:transform .18s ease,box-shadow .18s ease}.primary{background:var(--ink);box-shadow:0 10px 24px rgba(20,55,42,.16)}.primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(20,55,42,.22)}.secondary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,55,42,.1)}
+.heroCopy h1{letter-spacing:-.078em}.heroCopy .lead{max-width:610px;color:#edf4ee}.travelSearch{border:1px solid rgba(255,255,255,.7);box-shadow:0 24px 70px rgba(10,38,28,.22)}
+.sectionHead h2,.bookingHeader h2,.finalCta h2{letter-spacing:-.065em}.itineraryCard,.destinationCard,.bookingCategory{box-shadow:0 12px 30px rgba(24,53,39,.06)}.itineraryCard:hover,.destinationCard:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(24,53,39,.12)}
+.bookingSection{background:#fff}.bookBand{background:#102c23}.valueSection{background:#16372c}
+@media(max-width:620px){.nav{height:70px}.brand{font-size:23px}.heroCopy h1{letter-spacing:-.07em}.primary,.secondary{min-height:50px}.itineraryCard:hover,.destinationCard:hover{transform:none}}
