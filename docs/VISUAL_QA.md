@@ -24,4 +24,4 @@ The live homepage had a strong content concept but felt visually uneven: several
 
 ## Remaining
 
-Full browser screenshot comparison after Netlify’s next Git-connected deploy is still required. Core Web Vitals and a full device matrix remain outside this pass.
+Latest live QA: Netlify production now serves commit `ff20956`. The homepage has a visible split editorial hero with the Ha Long Bay image card, dark editorial copy, floating planner panel and responsive mobile stack. Desktop and mobile screenshots were captured after deployment; the AICoworker browser toolbar overlay is not part of the website. Core Web Vitals and a full device matrix remain outside this pass.
