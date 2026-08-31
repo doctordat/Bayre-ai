@@ -13,6 +13,8 @@ type PageData = {
   plannerDays?: string;
   bookingKey?: 'flights' | 'hotels' | 'experiences' | 'transfers' | 'esim' | 'other';
   bookingLabel?: string;
+  decisionTitle?: string;
+  decisionRows?: { label: string; detail: string; fit: string }[];
 };
 
 const pages: Record<string, PageData> = {
@@ -139,6 +141,20 @@ const pages: Record<string, PageData> = {
   },
 };
 
+
+const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionRows'>> = {
+  hanoi: { decisionTitle: 'Choose your Hanoi base', decisionRows: [{ label: 'Old Quarter', detail: 'Most walkable, busy and food-focused', fit: 'First visit and short stays' }, { label: 'French Quarter', detail: 'Quieter streets and wider hotel rooms', fit: 'Couples and slower evenings' }, { label: 'West Lake', detail: 'More residential, farther from core sights', fit: 'Longer stays and repeat visitors' }] },
+  'ho-chi-minh-city': { decisionTitle: 'Choose your HCMC base', decisionRows: [{ label: 'District 1', detail: 'Central sights, restaurants and nightlife', fit: 'First visit' }, { label: 'District 3', detail: 'Calmer streets with local food nearby', fit: 'Sleep quality and neighborhood feel' }, { label: 'District 2', detail: 'Modern cafes and longer-stay comfort', fit: 'Families and digital nomads' }] },
+  'da-nang-hoi-an': { decisionTitle: 'Da Nang or Hoi An?', decisionRows: [{ label: 'Da Nang', detail: 'Beach, airport and modern hotel convenience', fit: 'Short stays and beach priority' }, { label: 'Hoi An', detail: 'Heritage streets, food and evening atmosphere', fit: 'Culture and slower pace' }, { label: 'Split both', detail: 'Practical arrival plus atmospheric nights', fit: 'Four or more nights' }] },
+  'phu-quoc': { decisionTitle: 'Pick the right Phu Quoc stay', decisionRows: [{ label: 'West coast', detail: 'Sunsets, resorts and easier dining', fit: 'First island visit' }, { label: 'North', detail: 'Quieter resorts and larger attractions nearby', fit: 'Families and resort time' }, { label: 'South', detail: 'Beaches and island excursions', fit: 'Activity-led beach trips' }] },
+  'vietnam-itinerary-7-days': { decisionTitle: 'A realistic 7-day pace', decisionRows: [{ label: 'North + central', detail: 'Hanoi with Da Nang/Hoi An', fit: 'Food, history and coast' }, { label: 'South + beach', detail: 'HCMC with a beach finish', fit: 'Shorter transfers and downtime' }, { label: 'North only', detail: 'Hanoi, Ninh Binh and Ha Long', fit: 'Less flying and deeper local pace' }] },
+  'vietnam-itinerary-10-days': { decisionTitle: 'A balanced 10-day route', decisionRows: [{ label: 'Hanoi · 3 nights', detail: 'Arrive, eat, walk and recover', fit: 'Northern culture' }, { label: 'Ha Long · 1 night', detail: 'Cruise without taking over the trip', fit: 'Signature landscape' }, { label: 'Hoi An · 3 + HCMC · 2', detail: 'Central slowdown then southern energy', fit: 'Classic first trip' }] },
+  'vietnam-itinerary-14-days': { decisionTitle: 'Use two weeks well', decisionRows: [{ label: 'North · 4 nights', detail: 'Hanoi plus Ha Long or Ninh Binh', fit: 'Culture and scenery' }, { label: 'Central · 4 nights', detail: 'Da Nang and Hoi An with breathing room', fit: 'Food, heritage and beach' }, { label: 'South/island · 5 nights', detail: 'HCMC plus optional Phu Quoc', fit: 'City energy and rest' }] },
+  'vietnam-travel-cost': { decisionTitle: 'What changes your budget?', decisionRows: [{ label: 'A · ≈ US$45/day', detail: 'Simple stays, local food and public transit', fit: 'Independent budget travelers' }, { label: 'B · ≈ US$85/day', detail: 'Comfortable hotels, easier transfers and tours', fit: 'Most first-time visitors' }, { label: 'C · ≈ US$170/day', detail: 'Boutique stays, premium cruises and private transport', fit: 'Comfort and convenience' }] },
+  'vietnam-esim': { decisionTitle: 'Check an eSIM before buying', decisionRows: [{ label: 'Compatibility', detail: 'Phone must be unlocked and eSIM-capable', fit: 'Check before departure' }, { label: 'Validity', detail: 'Match data days to the actual itinerary', fit: 'Avoid paying for unused days' }, { label: 'Activation', detail: 'Keep QR/support details offline', fit: 'Late arrivals and airport pickup' }] },
+  'ha-long-bay-from-hanoi': { decisionTitle: 'Day trip or overnight?', decisionRows: [{ label: 'Day trip', detail: 'Faster, simpler and uses no hotel night', fit: '7-day itineraries' }, { label: 'One night', detail: 'More time on the bay and less rushing', fit: '10–14 day itineraries' }, { label: 'Skip it', detail: 'Use the time for Ninh Binh or deeper Hanoi', fit: 'Travelers sensitive to long transfers' }] },
+};
+
 export function generateStaticParams() { return Object.keys(pages).map((slug) => ({ slug })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -155,7 +171,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function SeoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const page = pages[slug];
+  const page = { ...pages[slug], ...decisionGuides[slug] };
   if (!page) notFound();
   const isItinerary = page.eyebrow === 'ITINERARY';
   const planningNote = isItinerary
@@ -192,6 +208,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
           <h2>Quick plan</h2>
           <ul>{page.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
           {page.sections.map((section) => <section key={section.heading} style={{ marginTop: 34 }}><h2>{section.heading}</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{section.text}</p></section>)}
+          {page.decisionRows && <section className="decisionGuide" style={{ marginTop: 42 }}><h2>{page.decisionTitle}</h2><div role="table" aria-label={page.decisionTitle}>{page.decisionRows.map((row) => <div key={row.label} role="row" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1fr', gap: 12, padding: '14px 0', borderTop: '1px solid #dfe6e1' }}><strong role="cell">{row.label}</strong><span role="cell" style={{ color: '#59675f' }}>{row.detail}</span><span role="cell" style={{ color: '#1e8c57', fontWeight: 700 }}>{row.fit}</span></div>)}</div></section>}
           <section style={{ marginTop: 34 }}><h2>Planning note</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{planningNote}</p></section>
         </div>
         <aside>
