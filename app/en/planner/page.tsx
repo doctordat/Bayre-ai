@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import { affiliates, type AffiliateKey } from '../../../lib/affiliates';
+
+export const metadata: Metadata = {
+  title: 'Vietnam Trip Planner',
+  description: 'Build a practical Vietnam itinerary by trip length, budget, travel style and interests.',
+  robots: { index: false, follow: true },
+};
 
 type Params = Promise<Record<string, string | string[] | undefined>>;
 type Stop = { city: string; nights: number; why: string; ideas: string[] };

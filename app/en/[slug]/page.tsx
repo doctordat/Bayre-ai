@@ -165,7 +165,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
     headline: page.title, description: page.intro, image: [page.image],
     author: { '@type': 'Organization', name: 'VietnamGo' },
     publisher: { '@type': 'Organization', name: 'VietnamGo' },
-    inLanguage: 'en', mainEntityOfPage: `/en/${slug}`,
+    inLanguage: 'en', mainEntityOfPage: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://bayre-ai-1kcx-bice.vercel.app'}/en/${slug}`,
   };
 
   return (
@@ -191,7 +191,19 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
           <p>Choose trip length, budget, travel style and interests. VietnamGo will build a practical starting itinerary.</p>
           <a className="primary" href={plannerHref}>{page.cta}</a>
           {page.bookingKey && <a className="secondary" style={{ marginTop: 10, display: 'inline-flex' }} href={bookingHref} target="_blank" rel="sponsored nofollow noopener">{page.bookingLabel || 'Check booking options'} →</a>}
+          <small style={{ display: 'block', marginTop: 14, color: '#718078', lineHeight: 1.5 }}>Some links are affiliate links. VietnamGo may earn a commission at no extra cost to you. Prices and availability come from the booking partner.</small>
         </aside>
+      </section>
+
+      <section className="seoRelated" aria-labelledby="related-guides">
+        <h2 id="related-guides">Related Vietnam planning guides</h2>
+        <div className="heroActions">
+          <a className="secondary" href="/en/vietnam-itinerary-10-days">10-day itinerary</a>
+          <a className="secondary" href="/en/vietnam-travel-cost">Vietnam travel cost</a>
+          <a className="secondary" href="/en/hanoi">Hanoi guide</a>
+          <a className="secondary" href="/en/da-nang-hoi-an">Da Nang & Hoi An</a>
+          <a className="secondary" href="/en/planner">Build my trip</a>
+        </div>
       </section>
 
       <section className="seoBooking">

@@ -44,11 +44,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: BASE_URL,
     inLanguage: 'en',
     description: 'Vietnam trip planner, travel guides, itineraries, budget estimates and booking discovery.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${BASE_URL}/en/guides`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 
   return (
