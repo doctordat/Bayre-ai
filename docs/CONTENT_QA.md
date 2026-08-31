@@ -19,6 +19,10 @@ The ten existing dynamic guide slugs now render a stronger editorial layer witho
 - No live-price, cheapest-guaranteed or fake comparison claims were introduced.
 - Build generated all 21 pages successfully.
 
+## Decision-support pass shipped
+
+Each of the 10 existing slugs now has a page-specific decision module with three authored rows. It covers Hanoi areas, HCMC districts, Da Nang vs Hoi An, Phu Quoc coast choices, 7/10/14-day pacing, cost tiers, eSIM checks and Ha Long day-trip vs overnight trade-offs. The module is semantic (`section`, headings, rows/cells), sits before booking CTAs and collapses to a readable one-column layout on mobile.
+
 ## Limitation
 
-This is the shared quality/content baseline. A second editorial pass should add deeply unique route tables, area comparisons, transport trade-offs and cost assumptions for each money page before calling the pages fully “ready for indexing.”
+The pages now have a real decision-support baseline, but a future editorial pass can add deeper route tables, sourced transport details, and richer cost assumptions before calling every page fully “ready for indexing.”
