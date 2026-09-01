@@ -18,6 +18,29 @@ type PageData = {
 };
 
 const pages: Record<string, PageData> = {
+  'vietnam-first-time-guide': {
+    title: 'Vietnam first-time travel guide: route, safety, costs and booking order',
+    eyebrow: 'FIRST-TIME GUIDE',
+    intro: 'Plan a first Vietnam trip with realistic route choices, weather caveats, money basics, safety checks and the booking order that matters most.',
+    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Traveler looking over a Vietnam landscape',
+    bullets: [
+      'Choose trip length and route shape before booking hotels',
+      'Treat Vietnam as north, central and south — weather is not the same everywhere',
+      'Book flights and key hotel bases first, then add tours, transfers and eSIM',
+      'Use official sources for visa and entry rules before you travel'
+    ],
+    sections: [
+      { heading: 'What should first-time visitors decide first?', text: 'Start with the number of days, arrival airport and pace. Seven days should stay focused, ten days can combine north plus central Vietnam, and two weeks gives you enough room for north, central and south without changing cities every day.' },
+      { heading: 'North to south or south to north?', text: 'Both can work. North-to-south is the classic first-trip shape if you want Hanoi, Ha Long Bay, Hoi An and Ho Chi Minh City. Reverse the route if flight prices, weather or your international flights make the south easier first.' },
+      { heading: 'What should you book before arriving?', text: 'Book international flights, your first two hotel bases and any trip-defining experience such as an overnight Ha Long Bay cruise. Leave smaller food stops, cafes and casual sights flexible so the trip does not feel over-scheduled.' },
+      { heading: 'What should you check, not memorize?', text: 'Visa, passport validity, health declarations, weather disruptions and attraction opening rules can change. Use VietnamGo for planning structure, then check official or partner pages for current requirements, schedules, prices and availability.' },
+      { heading: 'Common first-timer mistakes', text: 'Trying to cover every famous place in one week, assuming the whole country has one weather pattern, booking every hotel before the route is clear, underestimating airport-transfer time, and treating anecdotal forum prices as guaranteed current prices.' }
+    ],
+    cta: 'Build my first Vietnam trip',
+    plannerDays: '10',
+    bookingKey: 'flights', bookingLabel: 'Check Vietnam flights'
+  },
   hanoi: {
     title: 'Hanoi travel guide for first-time visitors',
     eyebrow: 'DESTINATION GUIDE',
@@ -143,6 +166,7 @@ const pages: Record<string, PageData> = {
 
 
 const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionRows'>> = {
+  'vietnam-first-time-guide': { decisionTitle: 'First Vietnam trip decision map', decisionRows: [{ label: '7 days', detail: 'Pick north + central or south + beach; do not cross the whole country.', fit: 'Fast but realistic first trip' }, { label: '10 days', detail: 'Hanoi, Ha Long or Ninh Binh, Hoi An/Da Nang, then HCMC if flights fit.', fit: 'Best balanced first visit' }, { label: '14 days', detail: 'Use 4–5 bases and add one slower beach, mountain or delta stop.', fit: 'Full north-central-south route' }] },
   hanoi: { decisionTitle: 'Choose your Hanoi base', decisionRows: [{ label: 'Old Quarter', detail: 'Most walkable, busy and food-focused', fit: 'First visit and short stays' }, { label: 'French Quarter', detail: 'Quieter streets and wider hotel rooms', fit: 'Couples and slower evenings' }, { label: 'West Lake', detail: 'More residential, farther from core sights', fit: 'Longer stays and repeat visitors' }] },
   'ho-chi-minh-city': { decisionTitle: 'Choose your HCMC base', decisionRows: [{ label: 'District 1', detail: 'Central sights, restaurants and nightlife', fit: 'First visit' }, { label: 'District 3', detail: 'Calmer streets with local food nearby', fit: 'Sleep quality and neighborhood feel' }, { label: 'District 2', detail: 'Modern cafes and longer-stay comfort', fit: 'Families and digital nomads' }] },
   'da-nang-hoi-an': { decisionTitle: 'Da Nang or Hoi An?', decisionRows: [{ label: 'Da Nang', detail: 'Beach, airport and modern hotel convenience', fit: 'Short stays and beach priority' }, { label: 'Hoi An', detail: 'Heritage streets, food and evening atmosphere', fit: 'Culture and slower pace' }, { label: 'Split both', detail: 'Practical arrival plus atmospheric nights', fit: 'Four or more nights' }] },
@@ -156,6 +180,7 @@ const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionR
 };
 
 const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
+  'vietnam-first-time-guide': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   hanoi: { days: '7', arrival: 'Hanoi', interest: 'food', budget: 'mid' },
   'ho-chi-minh-city': { days: '7', arrival: 'Ho Chi Minh City', interest: 'food', budget: 'mid' },
   'da-nang-hoi-an': { days: '10', arrival: 'Da Nang', interest: 'beach', budget: 'mid' },
