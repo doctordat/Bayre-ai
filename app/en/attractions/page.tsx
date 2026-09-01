@@ -24,6 +24,12 @@ const groups = [
     ['District 1 walking route', '/en/attractions/district-1-walking-route', 'Free city walk · 2–4 hours', 'Connect central sights, cafes and streets at your own pace.'],
     ['Mekong Delta from Ho Chi Minh City', '/en/attractions/mekong-delta-from-ho-chi-minh-city', 'Regional day trip · full day', 'Compare road time, boat time and tour inclusions before booking.'],
   ] },
+  { city: 'Ha Long Bay', intro: 'Signature limestone scenery, cruise choices and weather-sensitive northern experiences.', items: [
+    ['Ha Long Bay cruise', '/en/attractions/ha-long-bay-cruise', 'Cruise experience · full day+', 'Compare route, cabin, transfer and current inclusions.'],
+    ['Ha Long Bay day trip from Hanoi', '/en/attractions/ha-long-day-trip-from-hanoi', 'Day trip · most of a day', 'Weigh transfer time against time actually spent on the bay.'],
+    ['Ha Long Bay overnight cruise', '/en/attractions/ha-long-overnight-cruise', 'Overnight · fixed schedule', 'A slower option with weather and cancellation conditions to check.'],
+    ['Cat Ba Island alternative', '/en/attractions/cat-ba-island-alternative', 'Island base · 2+ nights', 'Choose flexibility and island time instead of one cruise product.'],
+  ] },
   { city: 'Phu Quoc', intro: 'Beach areas, boat days, markets and southern island experiences.', items: [
     ['Phu Quoc beaches and areas', '/en/attractions/phu-quoc-beaches-and-areas', 'Area guide · half day', 'Choose your base by beach style, dining and transfer needs.'],
     ['Phu Quoc island-hopping', '/en/attractions/phu-quoc-island-hopping', 'Boat day trip · full day', 'Compare sea conditions, route and operator inclusions.'],

@@ -40,6 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/attractions/phu-quoc-island-hopping', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/phu-quoc-night-market', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/hon-thom-cable-car', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ha-long-bay-cruise', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ha-long-day-trip-from-hanoi', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ha-long-overnight-cruise', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/cat-ba-island-alternative', priority: 0.75, frequency: 'monthly' as const },
   ];
 
   return pages.map(({ path, priority, frequency }) => ({
