@@ -8,6 +8,36 @@ Queries were sampled in English using Google locale parameters (`gl=us`, `gl=gb`
 
 Treat the matrix below as a hypothesis/prioritization input, not a market-size conclusion. Before publishing visa, entry, health, weather, transport or ticket facts, read official/primary sources, record the source URL and add a `checked on` date. PAA snippets are never a factual source.
 
+
+
+## Organic-source evidence table
+
+_Accessed: 2026-09-01. These sources are used for angle discovery and factual guardrails; they are not copied and do not replace official checks for volatile facts._
+
+| Cluster | Source | Publisher type | Content angle observed | VietnamGo usage | Freshness / caution |
+|---|---|---|---|---|---|
+| First-time | [Beginners Guide to Vietnam for First-Time Travellers](https://breathedreamgo.com/beginners-guide-to-vietnam/) | Editorial travel blog | Broad beginner checklist: visa, flights, getting around, money, tours, independent travel, motorbikes, safety, SIM, scams, beginner FAQs. | Confirms first-time pillar should be a decision hub, not just destinations. Include checklist + route links + planner CTA. | Blog/editorial; verify factual items separately, especially visa/SIM/safety. |
+| First-time | [Official Vietnam Tourism Website](https://vietnam.travel/) | Official tourism / destination marketing | Official destination inspiration and trip-planning navigation; useful for official attraction/destination framing. | Use for conservative destination framing and official outbound links, not ranking-volume claims. | Official but marketing-oriented; may omit risks/caveats. |
+| Best time | [Selective Asia — Best time to visit Vietnam/weather by month](https://www.selectiveasia.com/vietnam-holidays/weather/) | Commercial/editorial tour operator | Splits Vietnam weather into mountainous far north, north, central and south; highlights wet/dry seasons and regional caveats. | Supports a regional month-by-month decision table; avoid one universal “best month”. | Commercial tour seller; cross-check weather windows with additional sources. |
+| Best time | [Vietnam Weather by Month: The Best Time to Visit Each Region](https://www.vietnamtourism.com/en/vietnam-weather-by-month-the-best-time-to-visit-each-region) | Tourism/editorial | Explicitly frames Vietnam as three climate zones with different route implications. | Strong support for `/en/best-time-to-visit-vietnam` as route/weather decision page. | Site is tourism/editorial, not meteorological authority; avoid exact forecasts. |
+| Best time | [Audley Travel — Best Time to Visit Vietnam](https://www.audleytravel.com/us/vietnam/best-time-to-visit) | Commercial/editorial tour operator | SERP-visible result for best-time intent; page fetch blocked by Cloudflare. | Record as SERP competitor/angle only; do not use as factual source unless manually reviewed later. | Blocked fetch; no factual extraction used. |
+| Cost | [Travel Lemming — My Vietnam Budget: Exactly What I Spent in 2 Weeks](https://travellemming.com/perspectives/what-i-spent-in-vietnam-budget/) | Editorial travel site / first-person budget | First-person 2-week budget with route, accommodation, food/drink, transport, activities and unplanned expenses. | Expand `/en/vietnam-travel-cost` with assumptions, exclusions, route-specific scenarios and “what changes the total”. | Personal trip in May 2024; do not generalize exact spend as universal current cost. |
+| Cost | [Never Ending Footsteps — Cost of Travel in Vietnam](https://www.neverendingfootsteps.com/cost-of-travel-vietnam-budget/) | Editorial travel blog | SERP-visible budget competitor; fetch blocked by Cloudflare. | Record as competitor/angle only. Need later manual/browser review before citing. | Blocked fetch; no extracted factual claims. |
+| Transport | [Lonely Planet — The Best Ways to Travel Around in Vietnam](https://www.lonelyplanet.com/articles/getting-around-vietnam) | Editorial travel publisher | Compares Vietnam as overland route: Hanoi/HCMC distance, train line, buses, motorbike, boat, regional connections. | Supports `/en/getting-around-vietnam` and a Hanoi–Da Nang flight/train decision page with convenience/time trade-offs. | Editorial and may include affiliate links; verify schedules/prices with operators if stated. |
+| Visa / entry | [GOV.UK — Vietnam entry requirements](https://www.gov.uk/foreign-travel-advice/vietnam/entry-requirements) | Official government travel advice | Passport validity, blank pages, digital arrival card and health declaration caveats for British citizens. | Use as official-source model: country-specific, date-sensitive, clear “check official guidance” wording. | Applies to British citizens; not universal. Must add checked date and nationality caveat. |
+| Visa / official | [Vietnam eVisa portal](https://evisa.gov.vn/) | Official/primary government portal | Official eVisa source; fetch failed in this environment. | Link as official current-info source when writing visa caveats; do not restate rules without successful official review. | Fetch failed; browser/manual verification required before publishing visa guide. |
+| Safety / money | [GOV.UK — Vietnam safety and security](https://www.gov.uk/foreign-travel-advice/vietnam/safety-and-security) | Official government travel advice | Safety/security cautions, protests, internet/privacy, general risk framing. | Use to avoid over-softening safety content; first-time guide should be practical and conservative. | UK-specific government advice; avoid alarmism and cross-check with other governments. |
+| Safety / scams | [Backpackers Wanderlust — Scams in Vietnam](https://www.backpackerswanderlust.com/scams-in-vietnam/) | Editorial travel blog / affiliate | Practical tourist-scam angle: motorbike taxi/rental, taxi scams, tourist areas, booking transport links. | Use as angle discovery for “first-timer mistakes” and safety checklist; factual claims need moderation/corroboration. | Blog with affiliate links; do not present anecdotes as official risk rate. |
+
+## Evidence implications
+
+- The strongest immediate build target remains a **first-time pillar**, but it must be a navigator/decision page, not an everything-FAQ that cannibalizes itineraries.
+- The **best-time page** is justified as an uncovered regional decision aid. It should not promise perfect weather; it should help users choose trade-offs by route and month.
+- The **cost page** should be expanded, not duplicated. Competitors win with concrete assumptions and real scenarios, so VietnamGo should show budget bands, exclusions and what changes the trip total.
+- **Transport** deserves P1 treatment because organic evidence frames Vietnam as a long north-south corridor with real flight/train/bus trade-offs.
+- **Visa/entry** remains gated: only official-country or Vietnam immigration sources can support factual rules, and every claim needs nationality caveat + checked date.
+- **Safety/scams** belongs inside the first-time guide first; only split into a standalone page if Search Console later shows focused demand.
+
 ## Query-intent matrix
 
 | Market/query family | Questions visible in SERP/PAA | Decision need | Existing VietnamGo coverage | Gap/action | Priority | Freshness risk |
