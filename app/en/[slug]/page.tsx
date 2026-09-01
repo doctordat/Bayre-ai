@@ -18,6 +18,31 @@ type PageData = {
 };
 
 const pages: Record<string, PageData> = {
+  'getting-around-vietnam': {
+    title: 'Getting around Vietnam: flights, trains, buses and transfers',
+    eyebrow: 'TRANSPORT GUIDE',
+    intro: 'Choose the right way to move around Vietnam by balancing time, comfort, scenery, luggage and how much planning you want to do yourself.',
+    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Vietnam road and landscape for a transport guide',
+    bullets: [
+      'Fly between far-apart regions when time matters most',
+      'Choose trains for a slower coastal journey and daytime scenery',
+      'Use buses or shared transfers when the route is direct and flexible',
+      'Check current schedules, pickup points, luggage rules and cancellation terms'
+    ],
+    sections: [
+      { heading: 'How do tourists travel around Vietnam?', text: 'Most first-time routes combine domestic flights with trains, buses, taxis or pre-booked transfers. Vietnam is long and narrow, so the best mode depends on whether you are crossing regions or making a shorter local connection.' },
+      { heading: 'Flights: best when distance costs you a day', text: 'Domestic flights are usually the practical choice when you need to connect Hanoi, central Vietnam and Ho Chi Minh City within a short itinerary. Allow time for airport transfers, check-in, baggage and possible schedule changes rather than treating a flight as just the time in the air.' },
+      { heading: 'Trains: best for scenery and a slower pace', text: 'The north–south railway can turn a long transfer into part of the experience. Choose a train when the journey itself matters, you have more time, and you are comfortable with a slower trip. Check the current carriage, berth, departure station and arrival logistics before booking.' },
+      { heading: 'Buses and shared transfers: best for direct connections', text: 'Buses and shared vans can be useful for popular city-to-city and regional routes. Compare pickup location, arrival point, luggage handling and cancellation rules — a slightly cheaper ticket is not useful if it creates a difficult late-night transfer.' },
+      { heading: 'Airport and city transfers', text: 'For a late arrival, family trip or hotel outside the central area, a pre-arranged transfer can reduce friction. Otherwise, use the airport’s current official guidance and a reputable ride option, confirm the destination address and keep your booking details offline.' },
+      { heading: 'How to choose as a solo traveler or family', text: 'Solo travelers may value simple digital booking and flexible departures. Families may prefer fewer station changes, clear luggage arrangements and a direct hotel transfer. Couples often trade a little extra time for a scenic train or a more comfortable private transfer.' },
+      { heading: 'What to check before paying', text: 'Schedules, fares, operators, pickup points and cancellation rules change. VietnamGo helps you shape the route; check the booking partner or transport operator for current availability and conditions before payment.' }
+    ],
+    cta: 'Build my Vietnam route',
+    plannerDays: '10',
+    bookingKey: 'transfers', bookingLabel: 'Check transfer options'
+  },
   'best-time-to-visit-vietnam': {
     title: 'Best time to visit Vietnam: weather by region and route',
     eyebrow: 'SEASONAL PLANNING GUIDE',
@@ -193,6 +218,7 @@ const pages: Record<string, PageData> = {
 
 
 const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionRows'>> = {
+  'getting-around-vietnam': { decisionTitle: 'Choose your transport mode', decisionRows: [{ label: 'Domestic flight', detail: 'Best for crossing regions when your itinerary is short.', fit: 'Time-first routes' }, { label: 'Train', detail: 'Slower coastal travel where scenery and the journey matter.', fit: 'Scenic, relaxed routes' }, { label: 'Bus or transfer', detail: 'Useful for direct regional links when pickup and luggage are simple.', fit: 'Flexible local connections' }] },
   'best-time-to-visit-vietnam': { decisionTitle: 'Choose your route by seasonal priority', decisionRows: [{ label: 'North first', detail: 'Hanoi, Ninh Binh, Ha Long Bay or mountain scenery lead the trip.', fit: 'Culture, landscapes and cooler sightseeing' }, { label: 'Central first', detail: 'Da Nang, Hoi An and Hue shape the route around coast and heritage.', fit: 'Beach, food and old-town evenings' }, { label: 'South first', detail: 'HCMC, Mekong Delta or Phu Quoc set the opening pace.', fit: 'Warmth, city energy and island time' }] },
   'vietnam-first-time-guide': { decisionTitle: 'First Vietnam trip decision map', decisionRows: [{ label: '7 days', detail: 'Pick north + central or south + beach; do not cross the whole country.', fit: 'Fast but realistic first trip' }, { label: '10 days', detail: 'Hanoi, Ha Long or Ninh Binh, Hoi An/Da Nang, then HCMC if flights fit.', fit: 'Best balanced first visit' }, { label: '14 days', detail: 'Use 4–5 bases and add one slower beach, mountain or delta stop.', fit: 'Full north-central-south route' }] },
   hanoi: { decisionTitle: 'Choose your Hanoi base', decisionRows: [{ label: 'Old Quarter', detail: 'Most walkable, busy and food-focused', fit: 'First visit and short stays' }, { label: 'French Quarter', detail: 'Quieter streets and wider hotel rooms', fit: 'Couples and slower evenings' }, { label: 'West Lake', detail: 'More residential, farther from core sights', fit: 'Longer stays and repeat visitors' }] },
@@ -208,6 +234,7 @@ const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionR
 };
 
 const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
+  'getting-around-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   'best-time-to-visit-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   'vietnam-first-time-guide': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   hanoi: { days: '7', arrival: 'Hanoi', interest: 'food', budget: 'mid' },
