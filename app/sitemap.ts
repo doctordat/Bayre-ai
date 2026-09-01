@@ -31,6 +31,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/attractions/ba-na-hills', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/hoi-an-ancient-town', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/dragon-bridge-da-nang', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/war-remnants-museum', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/cu-chi-tunnels', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/ben-thanh-market', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/district-1-walking-route', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/mekong-delta-from-ho-chi-minh-city', priority: 0.75, frequency: 'monthly' as const },
   ];
 
   return pages.map(({ path, priority, frequency }) => ({

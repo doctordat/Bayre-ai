@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { title: 'Vietnam Attractions & Things to Do', description: 'Plan Vietnam attractions by city, time and ticket needs: Hanoi, Da Nang and Hoi An visitor guides for first-time travelers.', alternates: { canonical: '/en/attractions' } };
+export const metadata: Metadata = { title: 'Vietnam Attractions & Things to Do', description: 'Plan Vietnam attractions by city, time and ticket needs: Hanoi, Da Nang, Hoi An and Ho Chi Minh City visitor guides for first-time travelers.', alternates: { canonical: '/en/attractions' } };
 
 const groups = [
   { city: 'Hanoi', intro: 'Compact city landmarks, history and walkable neighborhoods.', items: [
@@ -16,6 +16,13 @@ const groups = [
     ['Ba Na Hills', '/en/attractions/ba-na-hills', 'Full-day ticketed trip', 'A planned mountain day; verify current official ticket information.'],
     ['Hoi An Ancient Town', '/en/attractions/hoi-an-ancient-town', 'Heritage visit · 2–4 hours', 'Morning details and evening atmosphere in the old town.'],
     ['Dragon Bridge', '/en/attractions/dragon-bridge-da-nang', 'Free landmark · 30–90 min', 'An easy riverfront evening stop; verify event timing.'],
+  ] },
+  { city: 'Ho Chi Minh City', intro: 'History, markets, city walks and regional day trips from the south.', items: [
+    ['War Remnants Museum', '/en/attractions/war-remnants-museum', 'History museum · 1.5–3 hours', 'A significant history visit that deserves time and reflection.'],
+    ['Cu Chi Tunnels', '/en/attractions/cu-chi-tunnels', 'History day trip · half day+', 'A structured excursion where transport and site conditions matter.'],
+    ['Ben Thanh Market', '/en/attractions/ben-thanh-market', 'Market · 45–90 min', 'A central food and shopping stop with flexible browsing time.'],
+    ['District 1 walking route', '/en/attractions/district-1-walking-route', 'Free city walk · 2–4 hours', 'Connect central sights, cafes and streets at your own pace.'],
+    ['Mekong Delta from Ho Chi Minh City', '/en/attractions/mekong-delta-from-ho-chi-minh-city', 'Regional day trip · full day', 'Compare road time, boat time and tour inclusions before booking.'],
   ] },
 ];
 
