@@ -237,6 +237,15 @@ const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionR
   'ha-long-bay-from-hanoi': { decisionTitle: 'Day trip or overnight?', decisionRows: [{ label: 'Day trip', detail: 'Faster, simpler and uses no hotel night', fit: '7-day itineraries' }, { label: 'One night', detail: 'More time on the bay and less rushing', fit: '10–14 day itineraries' }, { label: 'Skip it', detail: 'Use the time for Ninh Binh or deeper Hanoi', fit: 'Travelers sensitive to long transfers' }] },
 };
 
+const contextualLinks: Record<string, { href: string; label: string }[]> = {
+  'vietnam-first-time-guide': [{ href: '/en/attractions', label: 'Vietnam attractions hub' }, { href: '/en/getting-around-vietnam', label: 'Getting around Vietnam' }],
+  hanoi: [{ href: '/en/attractions/hoan-kiem-lake', label: 'Hoan Kiem Lake' }, { href: '/en/attractions/hanoi-old-quarter', label: 'Hanoi Old Quarter' }, { href: '/en/attractions/temple-of-literature-hanoi', label: 'Temple of Literature' }],
+  'da-nang-hoi-an': [{ href: '/en/attractions/my-khe-beach', label: 'My Khe Beach' }, { href: '/en/attractions/marble-mountains-da-nang', label: 'Marble Mountains' }, { href: '/en/attractions/hoi-an-ancient-town', label: 'Hoi An Ancient Town' }],
+  'ho-chi-minh-city': [{ href: '/en/attractions/war-remnants-museum', label: 'War Remnants Museum' }, { href: '/en/attractions/ben-thanh-market', label: 'Ben Thanh Market' }, { href: '/en/attractions/district-1-walking-route', label: 'District 1 walking route' }],
+  'phu-quoc': [{ href: '/en/attractions/phu-quoc-beaches-and-areas', label: 'Phu Quoc beaches and areas' }, { href: '/en/attractions/phu-quoc-island-hopping', label: 'Phu Quoc island-hopping' }, { href: '/en/attractions/hon-thom-cable-car', label: 'Hon Thom cable car' }],
+  'ha-long-bay-from-hanoi': [{ href: '/en/attractions/ha-long-bay-cruise', label: 'Ha Long Bay cruise' }, { href: '/en/attractions/ha-long-day-trip-from-hanoi', label: 'Ha Long day trip' }, { href: '/en/attractions/ha-long-overnight-cruise', label: 'Overnight cruise' }],
+};
+
 const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
   'getting-around-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   'best-time-to-visit-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
@@ -324,6 +333,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
 
       <section className="seoRelated" aria-labelledby="related-guides">
         <h2 id="related-guides">Related Vietnam planning guides</h2>
+        {contextualLinks[slug] && <div className="heroActions" aria-label="Relevant guides">{contextualLinks[slug].map((link) => <a className="secondary" href={link.href} key={link.href}>{link.label}</a>)}</div>}
         <div className="heroActions">
           <a className="secondary" href="/en/vietnam-itinerary-10-days">10-day itinerary</a>
           <a className="secondary" href="/en/vietnam-travel-cost">Vietnam travel cost</a>
