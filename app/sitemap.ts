@@ -36,6 +36,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/attractions/ben-thanh-market', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/district-1-walking-route', priority: 0.75, frequency: 'monthly' as const },
     { path: '/en/attractions/mekong-delta-from-ho-chi-minh-city', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/phu-quoc-beaches-and-areas', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/phu-quoc-island-hopping', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/phu-quoc-night-market', priority: 0.75, frequency: 'monthly' as const },
+    { path: '/en/attractions/hon-thom-cable-car', priority: 0.75, frequency: 'monthly' as const },
   ];
 
   return pages.map(({ path, priority, frequency }) => ({

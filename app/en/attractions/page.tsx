@@ -24,6 +24,12 @@ const groups = [
     ['District 1 walking route', '/en/attractions/district-1-walking-route', 'Free city walk · 2–4 hours', 'Connect central sights, cafes and streets at your own pace.'],
     ['Mekong Delta from Ho Chi Minh City', '/en/attractions/mekong-delta-from-ho-chi-minh-city', 'Regional day trip · full day', 'Compare road time, boat time and tour inclusions before booking.'],
   ] },
+  { city: 'Phu Quoc', intro: 'Beach areas, boat days, markets and southern island experiences.', items: [
+    ['Phu Quoc beaches and areas', '/en/attractions/phu-quoc-beaches-and-areas', 'Area guide · half day', 'Choose your base by beach style, dining and transfer needs.'],
+    ['Phu Quoc island-hopping', '/en/attractions/phu-quoc-island-hopping', 'Boat day trip · full day', 'Compare sea conditions, route and operator inclusions.'],
+    ['Phu Quoc Night Market', '/en/attractions/phu-quoc-night-market', 'Evening market · 60–120 min', 'Flexible food and browsing stop near the island’s central area.'],
+    ['Hon Thom cable car', '/en/attractions/hon-thom-cable-car', 'Ticketed experience · half day+', 'A structured southern-island day where operating conditions matter.'],
+  ] },
 ];
 
 export default function AttractionsPage() { return <main className="attractionsHub shell"><a className="brand" href="/">VietnamGo<span>.</span></a><header><span className="kicker">ATTRACTIONS BY CITY</span><h1>Know what is worth adding to your Vietnam route.</h1><p>Use practical visitor guides to decide what to see, how long to allow, whether tickets matter and where each attraction fits in your itinerary.</p></header>{groups.map(group => <section key={group.city}><div className="hubHeading"><span className="kicker">{group.city.toUpperCase()}</span><h2>{group.city}</h2><p>{group.intro}</p></div><div className="attractionCards">{group.items.map(([name,href,meta,desc]) => <a className="attractionCard" href={href} key={href}><span className="kicker">{meta}</span><h3>{name}</h3><p>{desc}</p><strong>Read visitor guide →</strong></a>)}</div></section>)}<section className="hubCta"><span className="kicker">NEXT STEP</span><h2>Turn attractions into a route.</h2><p>Choose your days, arrival city, pace and budget in the free VietnamGo planner.</p><a className="primary" href="/#planner">Build my Vietnam trip →</a></section></main>; }
