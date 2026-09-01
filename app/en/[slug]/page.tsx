@@ -18,6 +18,30 @@ type PageData = {
 };
 
 const pages: Record<string, PageData> = {
+  'best-time-to-visit-vietnam': {
+    title: 'Best time to visit Vietnam: weather by region and route',
+    eyebrow: 'SEASONAL PLANNING GUIDE',
+    intro: 'There is no single best month for all of Vietnam. Match your route to the different weather patterns in the north, central coast and south.',
+    image: 'https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Vietnam landscape under changing seasonal light',
+    bullets: [
+      'Think in three zones: north, central Vietnam and the south',
+      'Choose the route first, then check the seasonal trade-offs for each stop',
+      'Keep weather-flexible days around cruises, beaches and mountain trips',
+      'Check current forecasts and operator conditions close to departure'
+    ],
+    sections: [
+      { heading: 'When is the best time to visit Vietnam?', text: 'The honest answer depends on where you are going and what you want to do. A month that feels comfortable for Hanoi may be wet on the central coast, while the south can follow a different dry or wet-season pattern. Use the month as a planning input, not a guarantee.' },
+      { heading: 'North Vietnam: Hanoi, Ninh Binh, Ha Long Bay and the mountains', text: 'Northern routes are often planned around cooler, more comfortable sightseeing conditions and the possibility of rain or mist in mountain areas. If your trip is north-focused, leave room for changing visibility and avoid scheduling every scenic activity as a non-refundable must-do.' },
+      { heading: 'Central Vietnam: Da Nang, Hoi An, Hue and the coast', text: 'Central Vietnam has its own seasonal rhythm. Beach plans, heritage walks and day trips can have different weather experiences on the same journey, so compare the coast and inland stops instead of assuming the north’s conditions apply here.' },
+      { heading: 'Southern Vietnam: Ho Chi Minh City, the Mekong and Phu Quoc', text: 'Southern routes are generally warm year-round, with a different balance between drier periods and heavier showers. Short afternoon rain does not always cancel a city day, but island transfers and boat activities deserve a weather check close to departure.' },
+      { heading: 'How to plan a multi-region trip', text: 'For a north-to-south itinerary, accept that one or two regions may be less than perfect and protect your best weather-dependent experiences with flexibility. Ten to fourteen days gives you more room to move than a one-week route, but it still cannot guarantee identical conditions everywhere.' },
+      { heading: 'What to check before you book', text: 'Check current weather forecasts, cruise or boat operating notices, flight and train schedules, hotel cancellation terms and attraction updates. VietnamGo helps structure the route; official agencies and booking partners provide current operational information.' }
+    ],
+    cta: 'Build a route for my dates',
+    plannerDays: '10',
+    bookingKey: 'experiences', bookingLabel: 'Check seasonal experiences'
+  },
   'vietnam-first-time-guide': {
     title: 'Vietnam first-time travel guide: route, safety, costs and booking order',
     eyebrow: 'FIRST-TIME GUIDE',
@@ -166,6 +190,7 @@ const pages: Record<string, PageData> = {
 
 
 const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionRows'>> = {
+  'best-time-to-visit-vietnam': { decisionTitle: 'Choose your route by seasonal priority', decisionRows: [{ label: 'North first', detail: 'Hanoi, Ninh Binh, Ha Long Bay or mountain scenery lead the trip.', fit: 'Culture, landscapes and cooler sightseeing' }, { label: 'Central first', detail: 'Da Nang, Hoi An and Hue shape the route around coast and heritage.', fit: 'Beach, food and old-town evenings' }, { label: 'South first', detail: 'HCMC, Mekong Delta or Phu Quoc set the opening pace.', fit: 'Warmth, city energy and island time' }] },
   'vietnam-first-time-guide': { decisionTitle: 'First Vietnam trip decision map', decisionRows: [{ label: '7 days', detail: 'Pick north + central or south + beach; do not cross the whole country.', fit: 'Fast but realistic first trip' }, { label: '10 days', detail: 'Hanoi, Ha Long or Ninh Binh, Hoi An/Da Nang, then HCMC if flights fit.', fit: 'Best balanced first visit' }, { label: '14 days', detail: 'Use 4–5 bases and add one slower beach, mountain or delta stop.', fit: 'Full north-central-south route' }] },
   hanoi: { decisionTitle: 'Choose your Hanoi base', decisionRows: [{ label: 'Old Quarter', detail: 'Most walkable, busy and food-focused', fit: 'First visit and short stays' }, { label: 'French Quarter', detail: 'Quieter streets and wider hotel rooms', fit: 'Couples and slower evenings' }, { label: 'West Lake', detail: 'More residential, farther from core sights', fit: 'Longer stays and repeat visitors' }] },
   'ho-chi-minh-city': { decisionTitle: 'Choose your HCMC base', decisionRows: [{ label: 'District 1', detail: 'Central sights, restaurants and nightlife', fit: 'First visit' }, { label: 'District 3', detail: 'Calmer streets with local food nearby', fit: 'Sleep quality and neighborhood feel' }, { label: 'District 2', detail: 'Modern cafes and longer-stay comfort', fit: 'Families and digital nomads' }] },
@@ -180,6 +205,7 @@ const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionR
 };
 
 const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
+  'best-time-to-visit-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   'vietnam-first-time-guide': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
   hanoi: { days: '7', arrival: 'Hanoi', interest: 'food', budget: 'mid' },
   'ho-chi-minh-city': { days: '7', arrival: 'Ho Chi Minh City', interest: 'food', budget: 'mid' },

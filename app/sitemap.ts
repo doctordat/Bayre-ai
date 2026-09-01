@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en', priority: 1, frequency: 'weekly' as const },
     { path: '/en/guides', priority: 0.95, frequency: 'weekly' as const },
     { path: '/en/vietnam-first-time-guide', priority: 0.95, frequency: 'monthly' as const },
+    { path: '/en/best-time-to-visit-vietnam', priority: 0.95, frequency: 'monthly' as const },
     { path: '/en/explore', priority: 0.9, frequency: 'weekly' as const },
     { path: '/en/attractions', priority: 0.9, frequency: 'weekly' as const },
     { path: '/en/vietnam-itinerary-10-days', priority: 0.95, frequency: 'monthly' as const },
