@@ -6,7 +6,7 @@ _Production: `https://bayre-ai.vercel.app/`
 ## Release
 
 - Production branch: `main`
-- Production source commit verified in Vercel: `d533d2c` (`Merge cheap flight guide into production`)
+- Production source commit verified in Vercel during the post-release sweep: `cb89283` (`Standardize route hub SEO`), containing the previously merged guide at `d533d2c`
 - Vercel status: Ready
 - `origin/main`: `d533d2c`
 
