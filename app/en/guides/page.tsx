@@ -43,7 +43,7 @@ export default function GuidesPage() {
         <span className="kicker">BUILD YOUR ROUTE</span>
         <h2 style={{ fontSize: 40, marginBottom: 10 }}>Turn the research into a trip.</h2>
         <p style={{ color: '#647168', lineHeight: 1.65, maxWidth: 720 }}>Choose days, travel style, interests and budget A/B/C. VietnamGo will generate a practical starter itinerary, then show connected booking partners.</p>
-        <a className="primary" href="/#planner">Plan my Vietnam trip →</a>
+        <a className="secondary" href="/en/attractions">Browse attractions by city →</a><a className="primary" href="/#planner">Plan my Vietnam trip →</a>
       </section>
     </main>
   );

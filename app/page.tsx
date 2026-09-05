@@ -49,7 +49,7 @@ export default function HomePage() {
           <div className="heroCopy">
             <div className="eyebrow">VIETNAM TRIP PLANNING FOR FIRST-TIME VISITORS</div>
             <h1>Go further.<br /><em>Plan lighter.</em></h1>
-            <p className="lead">Tell us where you are flying from, your dates and travel style. VietnamGo builds a sensible Vietnam route, estimates the budget, then helps you book the pieces.</p>
+            <p className="lead">Planning a trip to Vietnam from the US, UK, Australia or Europe? VietnamGo turns your days, interests and budget into a practical route — then helps you find the flights, hotels, tours and transfers worth checking.</p>
             <div className="heroActions"><a className="primary warm" href="#planner">Build my Vietnam trip <span>→</span></a><Link className="textLink" href="/en/guides">Read Vietnam travel guides <span>↗</span></Link></div>
             <div className="heroProof"><span>✓ No sign-up</span><span>✓ Free route planner</span><span>✓ Real destination photos</span><span>✓ Live prices stay with booking partners</span></div>
           </div>
@@ -63,7 +63,7 @@ export default function HomePage() {
       <section id="planner" className="plannerWrap">
         <div className="shell">
           <div className="plannerBadge">PLAN → COMPARE → BOOK</div>
-          <div className="sectionHead plannerHead"><div><span className="kicker">FREE VIETNAM TRIP SEARCH</span><h2>Start with the trip you actually want to take.</h2></div><p>Enter the basics. We use them to shape the itinerary and estimate — not to pretend we have live airline inventory.</p></div>
+          <div className="sectionHead plannerHead"><div><span className="kicker">FREE VIETNAM TRIP SEARCH</span><h2>Build a Vietnam itinerary that fits your time, not someone else’s highlight reel.</h2></div><p>Choose your arrival point, trip length, travel style and spending level. Get a sensible starting route and planning estimate before you open a dozen booking tabs.</p></div>
           <form className="travelSearch" action="/en/planner">
             <div className="searchPrimary">
               <label className="searchField wide"><span>From</span><input name="origin" type="text" placeholder="e.g. London, Sydney, Berlin" required /></label>
@@ -92,7 +92,7 @@ export default function HomePage() {
 
       <section className="valueSection">
         <div className="shell valueGrid">
-          <div className="valueIntro"><span className="kicker light">VIETNAMGO EDITORIAL METHOD</span><h2>Answer the travel questions before the checkout questions.</h2><p>We design the route around pace, geography and realistic spending first. Booking links come after the plan makes sense.</p><Link className="valueLink" href="/en/guides">Browse the travel guides →</Link></div>
+          <div className="valueIntro"><span className="kicker light">VIETNAMGO EDITORIAL METHOD</span><h2>The smarter way to plan a first trip to Vietnam.</h2><p>VietnamGo combines destination knowledge, day-by-day itineraries and realistic budget guidance so you can decide where to go, how long to stay and what to book next.</p><Link className="valueLink" href="/en/guides">Browse the travel guides →</Link></div>
           <div className="valueList">
             <article><span>01</span><div><h3>Where should I land?</h3><p>Start from Hanoi, Da Nang, Ho Chi Minh City or Phu Quoc depending on the route you want — not just the cheapest-looking flight.</p></div></article>
             <article><span>02</span><div><h3>How much should I budget?</h3><p>Use A/B/C spending bands to compare a smart-budget, comfortable or premium version of the same trip.</p></div></article>
@@ -103,7 +103,7 @@ export default function HomePage() {
 
       <section id="itineraries" className="itineraryBand">
         <div className="shell">
-          <div className="sectionHead"><div><span className="kicker">POPULAR TRIP IDEAS</span><h2>Start from a route that already makes geographic sense.</h2></div><p>Choose a proven outline, then personalize it around your dates, pace and spending style.</p></div>
+          <div className="sectionHead"><div><span className="kicker">POPULAR TRIP IDEAS</span><h2>Choose a Vietnam itinerary that already works on the map.</h2></div><p>Start with 7, 10 or 14 days, then shape the route around your pace, travel style and budget.</p></div>
           <div className="itineraryGrid">
             {itineraries.map((trip, index) => <Link className={`itineraryCard ${trip.tone}`} href={trip.href} key={trip.days}><div className="itineraryTop"><small>0{index + 1} · VIETNAM ITINERARY</small><span>↗</span></div><b>{trip.days}</b><h3>{trip.title}</h3><p>{trip.description}</p><em>{trip.route}</em></Link>)}
           </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
 
       <section id="book" className="bookingSection">
         <div className="shell">
-          <div className="bookingHeader"><div><span className="kicker">WHEN YOU&apos;RE READY</span><h2>Turn the route<br />into a real trip.</h2></div><p>Check current availability with connected partners after you know your route and budget. VietnamGo does not invent or cache live prices.</p></div>
+          <div className="bookingHeader"><div><span className="kicker">WHEN YOU&apos;RE READY</span><h2>Know the route.<br />Then book the right pieces.</h2></div><p>Once your route makes sense, check current availability with connected booking partners. VietnamGo helps you decide first; partners provide live prices and booking.</p></div>
           <div className="bookingCategories">
             {bookingProducts.map((product) => (
               <article className="bookingCategory active" key={product.key}>

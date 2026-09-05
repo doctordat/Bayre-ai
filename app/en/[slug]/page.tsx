@@ -13,9 +13,83 @@ type PageData = {
   plannerDays?: string;
   bookingKey?: 'flights' | 'hotels' | 'experiences' | 'transfers' | 'esim' | 'other';
   bookingLabel?: string;
+  decisionTitle?: string;
+  decisionRows?: { label: string; detail: string; fit: string }[];
 };
 
 const pages: Record<string, PageData> = {
+  'getting-around-vietnam': {
+    title: 'Getting around Vietnam: flights, trains, buses and transfers',
+    eyebrow: 'TRANSPORT GUIDE',
+    intro: 'Choose the right way to move around Vietnam by balancing time, comfort, scenery, luggage and how much planning you want to do yourself.',
+    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Vietnam road and landscape for a transport guide',
+    bullets: [
+      'Fly between far-apart regions when time matters most',
+      'Choose trains for a slower coastal journey and daytime scenery',
+      'Use buses or shared transfers when the route is direct and flexible',
+      'Check current schedules, pickup points, luggage rules and cancellation terms'
+    ],
+    sections: [
+      { heading: 'How do tourists travel around Vietnam?', text: 'Most first-time routes combine domestic flights with trains, buses, taxis or pre-booked transfers. Vietnam is long and narrow, so the best mode depends on whether you are crossing regions or making a shorter local connection.' },
+      { heading: 'Flights: best when distance costs you a day', text: 'Domestic flights are usually the practical choice when you need to connect Hanoi, central Vietnam and Ho Chi Minh City within a short itinerary. Allow time for airport transfers, check-in, baggage and possible schedule changes rather than treating a flight as just the time in the air.' },
+      { heading: 'Trains: best for scenery and a slower pace', text: 'The north–south railway can turn a long transfer into part of the experience. Choose a train when the journey itself matters, you have more time, and you are comfortable with a slower trip. Check the current carriage, berth, departure station and arrival logistics before booking.' },
+      { heading: 'Buses and shared transfers: best for direct connections', text: 'Buses and shared vans can be useful for popular city-to-city and regional routes. Compare pickup location, arrival point, luggage handling and cancellation rules — a slightly cheaper ticket is not useful if it creates a difficult late-night transfer.' },
+      { heading: 'Airport and city transfers', text: 'For a late arrival, family trip or hotel outside the central area, a pre-arranged transfer can reduce friction. Otherwise, use the airport’s current official guidance and a reputable ride option, confirm the destination address and keep your booking details offline.' },
+      { heading: 'How to choose as a solo traveler or family', text: 'Solo travelers may value simple digital booking and flexible departures. Families may prefer fewer station changes, clear luggage arrangements and a direct hotel transfer. Couples often trade a little extra time for a scenic train or a more comfortable private transfer.' },
+      { heading: 'What to check before paying', text: 'Schedules, fares, operators, pickup points and cancellation rules change. VietnamGo helps you shape the route; check the booking partner or transport operator for current availability and conditions before payment.' }
+    ],
+    cta: 'Build my Vietnam route',
+    plannerDays: '10',
+    bookingKey: 'transfers', bookingLabel: 'Check transfer options'
+  },
+  'best-time-to-visit-vietnam': {
+    title: 'Best time to visit Vietnam: weather by region and route',
+    eyebrow: 'SEASONAL PLANNING GUIDE',
+    intro: 'There is no single best month for all of Vietnam. Match your route to the different weather patterns in the north, central coast and south.',
+    image: 'https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Vietnam landscape under changing seasonal light',
+    bullets: [
+      'Think in three zones: north, central Vietnam and the south',
+      'Choose the route first, then check the seasonal trade-offs for each stop',
+      'Keep weather-flexible days around cruises, beaches and mountain trips',
+      'Check current forecasts and operator conditions close to departure'
+    ],
+    sections: [
+      { heading: 'When is the best time to visit Vietnam?', text: 'The honest answer depends on where you are going and what you want to do. A month that feels comfortable for Hanoi may be wet on the central coast, while the south can follow a different dry or wet-season pattern. Use the month as a planning input, not a guarantee.' },
+      { heading: 'North Vietnam: Hanoi, Ninh Binh, Ha Long Bay and the mountains', text: 'Northern routes are often planned around cooler, more comfortable sightseeing conditions and the possibility of rain or mist in mountain areas. If your trip is north-focused, leave room for changing visibility and avoid scheduling every scenic activity as a non-refundable must-do.' },
+      { heading: 'Central Vietnam: Da Nang, Hoi An, Hue and the coast', text: 'Central Vietnam has its own seasonal rhythm. Beach plans, heritage walks and day trips can have different weather experiences on the same journey, so compare the coast and inland stops instead of assuming the north’s conditions apply here.' },
+      { heading: 'Southern Vietnam: Ho Chi Minh City, the Mekong and Phu Quoc', text: 'Southern routes are generally warm year-round, with a different balance between drier periods and heavier showers. Short afternoon rain does not always cancel a city day, but island transfers and boat activities deserve a weather check close to departure.' },
+      { heading: 'How to plan a multi-region trip', text: 'For a north-to-south itinerary, accept that one or two regions may be less than perfect and protect your best weather-dependent experiences with flexibility. Ten to fourteen days gives you more room to move than a one-week route, but it still cannot guarantee identical conditions everywhere.' },
+      { heading: 'What to check before you book', text: 'Check current weather forecasts, cruise or boat operating notices, flight and train schedules, hotel cancellation terms and attraction updates. VietnamGo helps structure the route; official agencies and booking partners provide current operational information.' }
+    ],
+    cta: 'Build a route for my dates',
+    plannerDays: '10',
+    bookingKey: 'experiences', bookingLabel: 'Check seasonal experiences'
+  },
+  'vietnam-first-time-guide': {
+    title: 'Vietnam first-time travel guide: route, safety, costs and booking order',
+    eyebrow: 'FIRST-TIME GUIDE',
+    intro: 'Plan a first Vietnam trip with realistic route choices, weather caveats, money basics, safety checks and the booking order that matters most.',
+    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=85',
+    imageAlt: 'Traveler looking over a Vietnam landscape',
+    bullets: [
+      'Choose trip length and route shape before booking hotels',
+      'Treat Vietnam as north, central and south — weather is not the same everywhere',
+      'Book flights and key hotel bases first, then add tours, transfers and eSIM',
+      'Use official sources for visa and entry rules before you travel'
+    ],
+    sections: [
+      { heading: 'What should first-time visitors decide first?', text: 'Start with the number of days, arrival airport and pace. Seven days should stay focused, ten days can combine north plus central Vietnam, and two weeks gives you enough room for north, central and south without changing cities every day.' },
+      { heading: 'North to south or south to north?', text: 'Both can work. North-to-south is the classic first-trip shape if you want Hanoi, Ha Long Bay, Hoi An and Ho Chi Minh City. Reverse the route if flight prices, weather or your international flights make the south easier first.' },
+      { heading: 'What should you book before arriving?', text: 'Book international flights, your first two hotel bases and any trip-defining experience such as an overnight Ha Long Bay cruise. Leave smaller food stops, cafes and casual sights flexible so the trip does not feel over-scheduled.' },
+      { heading: 'What should you check, not memorize?', text: 'Visa, passport validity, health declarations, weather disruptions and attraction opening rules can change. Use VietnamGo for planning structure, then check official or partner pages for current requirements, schedules, prices and availability.' },
+      { heading: 'Common first-timer mistakes', text: 'Trying to cover every famous place in one week, assuming the whole country has one weather pattern, booking every hotel before the route is clear, underestimating airport-transfer time, and treating anecdotal forum prices as guaranteed current prices.' }
+    ],
+    cta: 'Build my first Vietnam trip',
+    plannerDays: '10',
+    bookingKey: 'flights', bookingLabel: 'Check Vietnam flights'
+  },
   hanoi: {
     title: 'Hanoi travel guide for first-time visitors',
     eyebrow: 'DESTINATION GUIDE',
@@ -110,21 +184,28 @@ const pages: Record<string, PageData> = {
     title: 'Vietnam travel cost: budget, mid-range and premium', eyebrow: 'TRAVEL COST GUIDE',
     intro: 'Use a simple A/B/C framework to estimate what a Vietnam trip may cost before you start booking.',
     image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1600&q=85', imageAlt: 'Vietnam travel planning',
-    bullets: ['A: about US$45 per person per day', 'B: about US$85 per person per day', 'C: about US$170 per person per day'],
+    bullets: ['Budget A: about US$45 per person per day', 'Budget B: about US$85 per person per day', 'Budget C: about US$170 per person per day', 'Use these as planning bands, not guaranteed totals'],
     sections: [
-      { heading: 'Budget A — smart budget', text: 'Think simple hotels or hostels, local food, public transport and a small number of paid attractions.' },
-      { heading: 'Budget B — comfortable', text: 'This tier gives most first-time visitors well-rated hotels, easier transfers, food tours and more flexibility.' },
-      { heading: 'Budget C — premium', text: 'Use this range for boutique hotels, private transfers, premium cruises and higher-end dining. These are planning estimates, not live prices.' },
+      { heading: 'What do the daily bands include?', text: 'These planning bands are for on-the-ground travel: accommodation, everyday food, local transport and a modest allowance for activities. They are directional estimates, not live prices, and a private room or premium cruise can move the total quickly.' },
+      { heading: 'A realistic 7-day budget shape', text: 'A one-week trip is easier to keep predictable because you can limit the route to two or three bases. Budget for the accommodation nights, one domestic sector if needed, meals, local rides and the specific attractions that define your route.' },
+      { heading: 'A realistic 10-day budget shape', text: 'Ten days usually adds a domestic flight or longer transfer and one larger experience such as Ha Long Bay or a food tour. Keep a buffer for arrival and departure days, when airport transfers and short-notice changes can cost more.' },
+      { heading: 'A realistic 14-day budget shape', text: 'Two weeks gives you more time but also more hotel nights, meals and intercity movement. The best way to control the total is to slow down in a few bases instead of adding a new paid transfer or flight every day.' },
+      { heading: 'What is usually outside the estimate?', text: 'Check whether your own budget also needs to cover international flights, visa or entry costs, travel insurance, shopping, nightlife, premium cruises, private guides, major domestic flights and unexpected weather or medical expenses. Prices and availability come from the booking partner at the time you check.' },
+      { heading: 'How to decide whether your budget is enough', text: 'Start with your trip length and must-have experiences, then choose the band that protects those priorities. If you are unsure, keep accommodation flexible and compare current hotel, flight and experience options before committing.' },
     ], cta: 'Build a trip by budget', bookingKey: 'hotels', bookingLabel: 'Check current hotel prices'
   },
   'vietnam-esim': {
     title: 'Vietnam eSIM guide for travelers', eyebrow: 'CONNECTIVITY GUIDE',
     intro: 'An eSIM can be the easiest way to get mobile data in Vietnam without finding a physical SIM after landing.',
     image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1600&q=85', imageAlt: 'Traveler using a phone in Vietnam',
-    bullets: ['Check that your phone supports eSIM before buying', 'Install before departure when possible', 'Keep the QR code or activation details offline'],
+    bullets: ['Check that your phone is unlocked and eSIM-capable', 'Install before departure when possible, but activate at the right time', 'Keep the QR code, support details and backup Wi-Fi plan offline', 'Compare validity, data allowance and hotspot rules before buying'],
     sections: [
-      { heading: 'Who should use an eSIM?', text: 'It is especially convenient for short trips, late arrivals and travelers who want data working as soon as they land.' },
-      { heading: 'What to check before buying', text: 'Compare data allowance, validity period, hotspot support and whether the plan activates on installation or first network connection.' },
+      { heading: 'Who should use an eSIM?', text: 'An eSIM can be convenient for short trips, late arrivals and travelers who want data working soon after landing. It is not automatically the right choice if your phone is locked, your device lacks eSIM support or you need a local voice number.' },
+      { heading: 'Compatibility: check before paying', text: 'Confirm that the phone model supports eSIM, the device is unlocked and the operating system can add another mobile plan. Check the provider’s supported-device instructions rather than relying only on the phone brand name.' },
+      { heading: 'Installation and activation', text: 'Many travelers install an eSIM before departure and choose when it begins using mobile data. Read the provider instructions carefully: installation, activation and validity may be different events. Keep the QR code and support instructions available offline.' },
+      { heading: 'What to compare', text: 'Compare data allowance, validity period, network coverage described by the provider, hotspot support, throttling or fair-use language, activation timing and refund rules. Do not assume every plan supports calls, SMS or tethering.' },
+      { heading: 'Arrival checklist', text: 'Before landing, save your booking and activation details, keep your primary SIM available if you need SMS verification, and know how to select the travel line for data. Use airport or hotel Wi-Fi if setup does not work immediately.' },
+      { heading: 'If something goes wrong', text: 'Restarting the phone, checking the selected data line, confirming roaming settings and following the provider’s APN/support instructions may help. Do not delete the eSIM profile while troubleshooting unless the provider tells you to, because reinstall rules vary.' },
     ], cta: 'Plan my Vietnam trip', bookingKey: 'esim', bookingLabel: 'Check Vietnam eSIM options'
   },
   'ha-long-bay-from-hanoi': {
@@ -137,6 +218,48 @@ const pages: Record<string, PageData> = {
       { heading: 'When to book', text: 'Book after your Hanoi hotel dates are fixed. Cruise pickup logistics are much easier when your accommodation is confirmed.' },
     ], cta: 'Build a Hanoi + Ha Long route', bookingKey: 'experiences', bookingLabel: 'Check Ha Long Bay tours'
   },
+};
+
+
+const decisionGuides: Record<string, Pick<PageData, 'decisionTitle' | 'decisionRows'>> = {
+  'getting-around-vietnam': { decisionTitle: 'Choose your transport mode', decisionRows: [{ label: 'Domestic flight', detail: 'Best for crossing regions when your itinerary is short.', fit: 'Time-first routes' }, { label: 'Train', detail: 'Slower coastal travel where scenery and the journey matter.', fit: 'Scenic, relaxed routes' }, { label: 'Bus or transfer', detail: 'Useful for direct regional links when pickup and luggage are simple.', fit: 'Flexible local connections' }] },
+  'best-time-to-visit-vietnam': { decisionTitle: 'Choose your route by seasonal priority', decisionRows: [{ label: 'North first', detail: 'Hanoi, Ninh Binh, Ha Long Bay or mountain scenery lead the trip.', fit: 'Culture, landscapes and cooler sightseeing' }, { label: 'Central first', detail: 'Da Nang, Hoi An and Hue shape the route around coast and heritage.', fit: 'Beach, food and old-town evenings' }, { label: 'South first', detail: 'HCMC, Mekong Delta or Phu Quoc set the opening pace.', fit: 'Warmth, city energy and island time' }] },
+  'vietnam-first-time-guide': { decisionTitle: 'First Vietnam trip decision map', decisionRows: [{ label: '7 days', detail: 'Pick north + central or south + beach; do not cross the whole country.', fit: 'Fast but realistic first trip' }, { label: '10 days', detail: 'Hanoi, Ha Long or Ninh Binh, Hoi An/Da Nang, then HCMC if flights fit.', fit: 'Best balanced first visit' }, { label: '14 days', detail: 'Use 4–5 bases and add one slower beach, mountain or delta stop.', fit: 'Full north-central-south route' }] },
+  hanoi: { decisionTitle: 'Choose your Hanoi base', decisionRows: [{ label: 'Old Quarter', detail: 'Most walkable, busy and food-focused', fit: 'First visit and short stays' }, { label: 'French Quarter', detail: 'Quieter streets and wider hotel rooms', fit: 'Couples and slower evenings' }, { label: 'West Lake', detail: 'More residential, farther from core sights', fit: 'Longer stays and repeat visitors' }] },
+  'ho-chi-minh-city': { decisionTitle: 'Choose your HCMC base', decisionRows: [{ label: 'District 1', detail: 'Central sights, restaurants and nightlife', fit: 'First visit' }, { label: 'District 3', detail: 'Calmer streets with local food nearby', fit: 'Sleep quality and neighborhood feel' }, { label: 'District 2', detail: 'Modern cafes and longer-stay comfort', fit: 'Families and digital nomads' }] },
+  'da-nang-hoi-an': { decisionTitle: 'Da Nang or Hoi An?', decisionRows: [{ label: 'Da Nang', detail: 'Beach, airport and modern hotel convenience', fit: 'Short stays and beach priority' }, { label: 'Hoi An', detail: 'Heritage streets, food and evening atmosphere', fit: 'Culture and slower pace' }, { label: 'Split both', detail: 'Practical arrival plus atmospheric nights', fit: 'Four or more nights' }] },
+  'phu-quoc': { decisionTitle: 'Pick the right Phu Quoc stay', decisionRows: [{ label: 'West coast', detail: 'Sunsets, resorts and easier dining', fit: 'First island visit' }, { label: 'North', detail: 'Quieter resorts and larger attractions nearby', fit: 'Families and resort time' }, { label: 'South', detail: 'Beaches and island excursions', fit: 'Activity-led beach trips' }] },
+  'vietnam-itinerary-7-days': { decisionTitle: 'A realistic 7-day pace', decisionRows: [{ label: 'North + central', detail: 'Hanoi with Da Nang/Hoi An', fit: 'Food, history and coast' }, { label: 'South + beach', detail: 'HCMC with a beach finish', fit: 'Shorter transfers and downtime' }, { label: 'North only', detail: 'Hanoi, Ninh Binh and Ha Long', fit: 'Less flying and deeper local pace' }] },
+  'vietnam-itinerary-10-days': { decisionTitle: 'A balanced 10-day route', decisionRows: [{ label: 'Hanoi · 3 nights', detail: 'Arrive, eat, walk and recover', fit: 'Northern culture' }, { label: 'Ha Long · 1 night', detail: 'Cruise without taking over the trip', fit: 'Signature landscape' }, { label: 'Hoi An · 3 + HCMC · 2', detail: 'Central slowdown then southern energy', fit: 'Classic first trip' }] },
+  'vietnam-itinerary-14-days': { decisionTitle: 'Use two weeks well', decisionRows: [{ label: 'North · 4 nights', detail: 'Hanoi plus Ha Long or Ninh Binh', fit: 'Culture and scenery' }, { label: 'Central · 4 nights', detail: 'Da Nang and Hoi An with breathing room', fit: 'Food, heritage and beach' }, { label: 'South/island · 5 nights', detail: 'HCMC plus optional Phu Quoc', fit: 'City energy and rest' }] },
+  'vietnam-travel-cost': { decisionTitle: 'Choose the budget trade-off', decisionRows: [{ label: 'A · ≈ US$45/day', detail: 'Simple stays, local food and public transport; fewer premium activities.', fit: 'Value-first independent trip' }, { label: 'B · ≈ US$85/day', detail: 'Comfortable hotels, easier transfers and room for selected tours.', fit: 'Balanced first-time trip' }, { label: 'C · ≈ US$170/day', detail: 'Boutique stays, premium cruises and private transport where useful.', fit: 'Convenience and comfort' }] },
+  'vietnam-esim': { decisionTitle: 'Check an eSIM before buying', decisionRows: [{ label: 'Compatibility', detail: 'Phone must be unlocked and eSIM-capable; verify the supported model.', fit: 'Check before departure' }, { label: 'Plan rules', detail: 'Match validity, data and hotspot support to the actual itinerary.', fit: 'Avoid unused or limited data' }, { label: 'Activation', detail: 'Understand install vs activation and keep QR/support details offline.', fit: 'Late arrivals and setup problems' }] },
+  'ha-long-bay-from-hanoi': { decisionTitle: 'Day trip or overnight?', decisionRows: [{ label: 'Day trip', detail: 'Faster, simpler and uses no hotel night', fit: '7-day itineraries' }, { label: 'One night', detail: 'More time on the bay and less rushing', fit: '10–14 day itineraries' }, { label: 'Skip it', detail: 'Use the time for Ninh Binh or deeper Hanoi', fit: 'Travelers sensitive to long transfers' }] },
+};
+
+const contextualLinks: Record<string, { href: string; label: string }[]> = {
+  'vietnam-first-time-guide': [{ href: '/en/attractions', label: 'Vietnam attractions hub' }, { href: '/en/getting-around-vietnam', label: 'Getting around Vietnam' }],
+  hanoi: [{ href: '/en/attractions/hoan-kiem-lake', label: 'Hoan Kiem Lake' }, { href: '/en/attractions/hanoi-old-quarter', label: 'Hanoi Old Quarter' }, { href: '/en/attractions/temple-of-literature-hanoi', label: 'Temple of Literature' }],
+  'da-nang-hoi-an': [{ href: '/en/attractions/my-khe-beach', label: 'My Khe Beach' }, { href: '/en/attractions/marble-mountains-da-nang', label: 'Marble Mountains' }, { href: '/en/attractions/hoi-an-ancient-town', label: 'Hoi An Ancient Town' }],
+  'ho-chi-minh-city': [{ href: '/en/attractions/war-remnants-museum', label: 'War Remnants Museum' }, { href: '/en/attractions/ben-thanh-market', label: 'Ben Thanh Market' }, { href: '/en/attractions/district-1-walking-route', label: 'District 1 walking route' }],
+  'phu-quoc': [{ href: '/en/attractions/phu-quoc-beaches-and-areas', label: 'Phu Quoc beaches and areas' }, { href: '/en/attractions/phu-quoc-island-hopping', label: 'Phu Quoc island-hopping' }, { href: '/en/attractions/hon-thom-cable-car', label: 'Hon Thom cable car' }],
+  'ha-long-bay-from-hanoi': [{ href: '/en/attractions/ha-long-bay-cruise', label: 'Ha Long Bay cruise' }, { href: '/en/attractions/ha-long-day-trip-from-hanoi', label: 'Ha Long day trip' }, { href: '/en/attractions/ha-long-overnight-cruise', label: 'Overnight cruise' }],
+};
+
+const plannerPresets: Record<string, { days: string; arrival: string; interest: string; budget: string }> = {
+  'getting-around-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'best-time-to-visit-vietnam': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-first-time-guide': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  hanoi: { days: '7', arrival: 'Hanoi', interest: 'food', budget: 'mid' },
+  'ho-chi-minh-city': { days: '7', arrival: 'Ho Chi Minh City', interest: 'food', budget: 'mid' },
+  'da-nang-hoi-an': { days: '10', arrival: 'Da Nang', interest: 'beach', budget: 'mid' },
+  'phu-quoc': { days: '14', arrival: 'Phu Quoc', interest: 'beach', budget: 'mid' },
+  'vietnam-itinerary-7-days': { days: '7', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-itinerary-10-days': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-itinerary-14-days': { days: '14', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-travel-cost': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'vietnam-esim': { days: '10', arrival: 'Hanoi', interest: 'mix', budget: 'mid' },
+  'ha-long-bay-from-hanoi': { days: '10', arrival: 'Hanoi', interest: 'nature', budget: 'mid' },
 };
 
 export function generateStaticParams() { return Object.keys(pages).map((slug) => ({ slug })); }
@@ -155,9 +278,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function SeoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const page = pages[slug];
+  const page = { ...pages[slug], ...decisionGuides[slug] };
   if (!page) notFound();
-  const plannerHref = page.plannerDays ? `/en/planner?days=${page.plannerDays}&style=couple&budget=mid&interest=mix` : '/#planner';
+  const isItinerary = page.eyebrow === 'ITINERARY';
+  const planningNote = isItinerary
+    ? 'Protect real time in each base: arrival days are slower, domestic flights use half a day, and one flexible day makes weather and delays easier to absorb.'
+    : 'Make the main decision first, then book only the pieces that support it. VietnamGo gives planning guidance; live prices and availability remain with booking partners.';
+  const faq = [
+    { question: `What is the practical first step for ${page.title.toLowerCase()}?`, answer: page.intro + ' Start with the number of nights and your preferred pace before comparing booking options.' },
+    { question: 'How should I use this guide with the planner?', answer: 'Use the recommendations here as a starting preset, then adjust trip length, budget, style and interests in the free VietnamGo planner.' },
+  ];
+  const preset = plannerPresets[slug];
+  const plannerHref = preset ? `/en/planner?${new URLSearchParams({ days: preset.days, arrival: preset.arrival, style: 'couple', budget: preset.budget, interest: preset.interest }).toString()}` : '/#planner';
   const bookingHref = page.bookingKey ? `/go/${page.bookingKey}?src=seo&page=${slug}` : '/#book';
 
   const articleJsonLd = {
@@ -165,7 +297,7 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
     headline: page.title, description: page.intro, image: [page.image],
     author: { '@type': 'Organization', name: 'VietnamGo' },
     publisher: { '@type': 'Organization', name: 'VietnamGo' },
-    inLanguage: 'en', mainEntityOfPage: `/en/${slug}`,
+    inLanguage: 'en', mainEntityOfPage: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://bayre-ai-1kcx-bice.vercel.app'}/en/${slug}`,
   };
 
   return (
@@ -184,14 +316,31 @@ export default async function SeoPage({ params }: { params: Promise<{ slug: stri
           <h2>Quick plan</h2>
           <ul>{page.bullets.map((item) => <li key={item}>{item}</li>)}</ul>
           {page.sections.map((section) => <section key={section.heading} style={{ marginTop: 34 }}><h2>{section.heading}</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{section.text}</p></section>)}
+          {page.decisionRows && <section className="decisionGuide" style={{ marginTop: 42 }}><h2>{page.decisionTitle}</h2><div role="table" aria-label={page.decisionTitle}>{page.decisionRows.map((row) => <div key={row.label} role="row" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1fr', gap: 12, padding: '14px 0', borderTop: '1px solid #dfe6e1' }}><strong role="cell">{row.label}</strong><span role="cell" style={{ color: '#59675f' }}>{row.detail}</span><span role="cell" style={{ color: '#1e8c57', fontWeight: 700 }}>{row.fit}</span></div>)}</div></section>}
+          <section style={{ marginTop: 34 }}><h2>Planning note</h2><p style={{ lineHeight: 1.75, color: '#59675f' }}>{planningNote}</p></section>
         </div>
         <aside>
           <span className="kicker">FREE PLANNER</span>
           <h3>Turn this guide into your own route.</h3>
-          <p>Choose trip length, budget, travel style and interests. VietnamGo will build a practical starting itinerary.</p>
+          <p>This guide preloads a useful starting point in the planner. You can change trip length, arrival city, budget, travel style and interests before building your route.</p>
           <a className="primary" href={plannerHref}>{page.cta}</a>
           {page.bookingKey && <a className="secondary" style={{ marginTop: 10, display: 'inline-flex' }} href={bookingHref} target="_blank" rel="sponsored nofollow noopener">{page.bookingLabel || 'Check booking options'} →</a>}
+          <small style={{ display: 'block', marginTop: 14, color: '#718078', lineHeight: 1.5 }}>Some links are affiliate links. VietnamGo may earn a commission at no extra cost to you. Prices and availability come from the booking partner.</small>
         </aside>
+      </section>
+
+      <section className="seoFaq"><h2>Frequently asked questions</h2>{faq.map((item) => <article key={item.question}><h3>{item.question}</h3><p style={{ lineHeight: 1.7, color: '#59675f' }}>{item.answer}</p></article>)}</section>
+
+      <section className="seoRelated" aria-labelledby="related-guides">
+        <h2 id="related-guides">Related Vietnam planning guides</h2>
+        {contextualLinks[slug] && <div className="heroActions" aria-label="Relevant guides">{contextualLinks[slug].map((link) => <a className="secondary" href={link.href} key={link.href}>{link.label}</a>)}</div>}
+        <div className="heroActions">
+          <a className="secondary" href="/en/vietnam-itinerary-10-days">10-day itinerary</a>
+          <a className="secondary" href="/en/vietnam-travel-cost">Vietnam travel cost</a>
+          <a className="secondary" href="/en/hanoi">Hanoi guide</a>
+          <a className="secondary" href="/en/da-nang-hoi-an">Da Nang & Hoi An</a>
+          <a className="secondary" href="/en/planner">Build my trip</a>
+        </div>
       </section>
 
       <section className="seoBooking">
